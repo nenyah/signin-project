@@ -1,8 +1,15 @@
+<!--
+ * @Description: 
+ * @Author: Steven
+ * @Date: 2020-10-27 15:20:07
+ * @LastEditors: Steven
+ * @LastEditTime: 2020-10-27 16:50:19
+-->
 <template>
 	<view class="content">
         <image class="logo" src="../../static/logo.png"></image>
 		<view>
-            <text class="title">{{title}}</text>
+            <text class="title text-blue-500 border border-solid border-grey-500 p-2 bg-red-500 rounded-lg">{{title}}</text>
         </view>
 	</view>
 </template>
@@ -24,7 +31,7 @@
 	});
 </script>
 
-<style>
+<style lang='scss'>
 	.content {
 		display: flex;
 		flex-direction: column;
@@ -43,8 +50,8 @@
 		justify-content: center;
 	}
 
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
+	// .title {
+	// 	font-size: 36rpx;
+	// 	color: #d60909;
+	// }
 </style>
