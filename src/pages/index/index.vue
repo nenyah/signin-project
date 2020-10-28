@@ -3,13 +3,14 @@
  * @Author: Steven
  * @Date: 2020-10-27 15:20:07
  * @LastEditors: Steven
- * @LastEditTime: 2020-10-27 16:50:19
+ * @LastEditTime: 2020-10-28 09:08:00
 -->
 <template>
-	<view class="content">
-        <image class="logo" src="../../static/logo.png"></image>
+	<view class="flex flex-col items-center justify-center">
+        <image class="w-32 h-32 mt-10 mb-5 mx-auto" src="../../static/logo.png"></image>
 		<view>
             <text class="title text-blue-500 border border-solid border-grey-500 p-2 bg-red-500 rounded-lg">{{title}}</text>
+			<view class="fa fa-circle-o text-red-500"></view>
         </view>
 	</view>
 </template>
@@ -32,26 +33,4 @@
 </script>
 
 <style lang='scss'>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin: 200rpx auto 50rpx auto;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	// .title {
-	// 	font-size: 36rpx;
-	// 	color: #d60909;
-	// }
 </style>

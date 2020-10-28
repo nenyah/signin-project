@@ -3,7 +3,7 @@
  * @Author: Steven
  * @Date: 2020-10-27 15:20:07
  * @LastEditors: Steven
- * @LastEditTime: 2020-10-27 16:41:43
+ * @LastEditTime: 2020-10-28 09:07:27
 -->
 <script lang="ts">
 import Vue from 'vue'
@@ -21,12 +21,10 @@ export default Vue.extend({
 })
 </script>
 
-<style lang='scss'>
-
+<style lang="scss">
 /*每个页面公共css */
 @tailwind base;
-
 @tailwind components;
-
 @tailwind utilities;
+@import 'assets/css/font-awesome.css';
 </style>
