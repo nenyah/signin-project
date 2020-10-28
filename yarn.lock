@@ -10481,7 +10481,7 @@ symbol-tree@^3.2.2:
 
 tailwindcss@^1.9.6:
   version "1.9.6"
-  resolved "https://registry.npm.taobao.org/tailwindcss/download/tailwindcss-1.9.6.tgz#0c5089911d24e1e98e592a31bfdb3d8f34ecf1a0"
+  resolved "https://registry.npm.taobao.org/tailwindcss/download/tailwindcss-1.9.6.tgz?cache=0&sync_timestamp=1603814790819&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftailwindcss%2Fdownload%2Ftailwindcss-1.9.6.tgz#0c5089911d24e1e98e592a31bfdb3d8f34ecf1a0"
   integrity sha1-DFCJkR0k4emOWSoxv9s9jzTs8aA=
   dependencies:
     "@fullhuman/postcss-purgecss" "^2.1.2"

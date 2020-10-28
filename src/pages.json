@@ -3,14 +3,34 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "签到"
 			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "签到",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#404040",
+		"selectedColor": "#108ee9",
+		"borderStyle": "black",
+		"backgroundColor": "#F5F5F9",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/images/icon_signin_line.png",
+				"selectedIconPath": "static/images/icon_signin_line_active.png",
+				"text": "签到"
+			},
+			{
+				"pagePath": "pages/stats/stats",
+				"iconPath": "static/images/icon_statistics.png",
+				"selectedIconPath": "static/images/icon_statistics_active.png",
+				"text": "统计"
+			}
+		]
 	}
 }

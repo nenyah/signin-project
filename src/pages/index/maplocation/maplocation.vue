@@ -3,25 +3,24 @@
  * @Author: Steven
  * @Date: 2020-10-28 13:53:09
  * @LastEditors: Steven
- * @LastEditTime: 2020-10-28 14:05:07
+ * @LastEditTime: 2020-10-28 15:18:24
 -->
 <template>
     <view>
-        <view class="flex justify-between p-2 bg-color-white items-center">
-            <view class="text-2xl w-3-4 no-wrap">
-                宁波北仑华东医药门口
+        <view class="flex justify-between p-2 bg-gray-100 items-center w-full">
+            <view class="text-2xl truncate">
+                宁波北仑庐山西路华东医药有限公司西门1289号
             </view>
             <view
-                class="color-primary text-sm w-1-4 text-right"
-                onTap="adjustLocation"
+                class="text-blue-500 text-sm w-16 text-right flex-shrink-0"
+                @click="adjustLocation"
             >
                 地点微调
             </view>
         </view>
         <!-- 地图 -->
         <view
-            style="border-bottom:#e2e2e2 solid 1rpx;"
-            class="px-2 pb-2 bg-color-white"
+            class="px-2 pb-2 bg-gray-100 border-b-2 border-solid border-gray-400"
         >
             <map style="width: 100%; height: 100px;" :latitude="latitude" :longitude="longitude" :markers="covers">
             </map>
@@ -50,4 +49,8 @@ export default class Maplocation extends Vue {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.px-2 {
+    border-bottom: #e2e2e2 solid 1 rpx;
+}
+</style>
