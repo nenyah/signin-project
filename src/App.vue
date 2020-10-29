@@ -23,8 +23,6 @@ export default Vue.extend({
 
 <style lang="scss">
 /*每个页面公共css */
-@tailwind base;
-@tailwind components;
 @tailwind utilities;
 @import 'assets/css/font-awesome.css';
 </style>

@@ -3,16 +3,18 @@
  * @Author: Steven
  * @Date: 2020-10-27 15:20:07
  * @LastEditors: Steven
- * @LastEditTime: 2020-10-28 14:06:02
+ * @LastEditTime: 2020-10-29 14:22:59
 -->
 <template>
-    <view>
+    <view class="font-sans min-h-screen flex flex-col">
+        <!-- 头部 -->
         <Header></Header>
+        <!-- 地图 -->
         <Maplocation/>
         <!--选择人员-->
         <Org></Org>
         <!--签到-->
-        <signin></signin>
+        <Signin></Signin>
     </view>
 </template>
 

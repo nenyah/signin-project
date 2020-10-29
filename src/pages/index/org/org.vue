@@ -3,40 +3,44 @@
  * @Author: Steven
  * @Date: 2020-10-28 13:19:16
  * @LastEditors: Steven
- * @LastEditTime: 2020-10-28 15:01:42
+ * @LastEditTime: 2020-10-29 13:38:31
 -->
 <template>
-    <view class="flex bg-gray-100 items-center shadow justify-around px-2">
-        <view class="text-lg text-gray-900 font-bold w-24">拜访对象</view>
+    <view
+        class="flex bg-white w-full box-border items-center shadow justify-between px-20 py-10 border-0 border-b-2 border-gray-500 border-solid"
+    >
+        <view class="text-4xl text-gray-900 font-bold flex-shrink-0"
+            >拜访对象</view
+        >
         <view
-            class="p-2 text-sm flex-grow"
+            class="text-3xl"
             :class="
-                    client.name.length === 0 ? 'color-label' : 'color-big-title'
-                "
+                client.name.length === 0 ? 'text-gray-400' : 'text-gray-900'
+            "
             @click="handleTap"
         >
-            {{ client.name.length > 0 ? client.name : "请选择拜访客户" }}
+            {{ client.name.length > 0 ? client.name : '请选择拜访客户' }}
         </view>
         <view
             @click="handleTap"
-            class="w-10 flex flex-col items-center justify-center"
+            class="flex flex-col items-center justify-center"
         >
             <view
-                class="fa fa-address-book-o fa-lg text-blue-500 my-2"
+                class="fa fa-address-book-o fa-lg text-blue-500 my-10"
                 aria-hidden="true"
             ></view>
-            <view class="text-xs text-blue-500">选择</view>
+            <view class="text-bash text-blue-500">选择</view>
         </view>
     </view>
 </template>
 
 <script lang="ts">
-import {Component, Vue} from "vue-property-decorator"
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({})
 export default class Org extends Vue {
     private client = {
-        name: "",
+        name: '',
     }
 }
 </script>

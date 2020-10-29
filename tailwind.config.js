@@ -3,7 +3,7 @@
  * @Author: Steven
  * @Date: 2020-10-27 16:16:22
  * @LastEditors: Steven
- * @LastEditTime: 2020-10-28 16:49:36
+ * @LastEditTime: 2020-10-29 13:21:26
  */
 module.exports = {
     future: {
@@ -12,7 +12,12 @@ module.exports = {
     },
     prefix: '',
     separator: ':',
-    purge: ['./src/**/*.vue', './src/**/*.jsx'],
+    purge: [
+        './src/**/*.vue',
+        './src/**/*.jsx',
+        './src/**/*.ts',
+        './src/**/*.tsx',
+    ],
     theme: {
         screens: {},
         borderWidth: {
