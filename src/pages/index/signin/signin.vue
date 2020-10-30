@@ -31,7 +31,7 @@
             </view>
             <view v-else class="text-gray-700 text-3xl">今日你还没有签到</view>
         </view>
-        <view class="text-gray-500" @click="goTest">
+        <view class="text-gray-500">
             钉钉只会在你主动签到时获取位置信息
         </view>
     </view>
@@ -44,7 +44,11 @@ import moment from 'moment'
 export default class Signin extends Vue {
     private checkTimes = 0
     private ctime = moment().format('HH:mm')
-    private onSubmit() {}
+    private goSubmit() {
+        uni.navigateTo({
+            url:"/pages/submit/submit"
+        })
+    }
 }
 </script>
 

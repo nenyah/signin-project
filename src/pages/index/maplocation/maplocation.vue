@@ -13,7 +13,7 @@
             </view>
             <view
                 class="text-blue-500 text-2xl font-bold flex-shrink-0"
-                @click="adjustLocation"
+                @click="goLocation"
             >
                 地点微调
             </view>
@@ -27,6 +27,7 @@
                 :latitude="latitude"
                 :longitude="longitude"
                 :markers="covers"
+                @click="goLocation"
             >
             </map>
         </view>
@@ -34,28 +35,34 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import {Component, Vue} from "vue-property-decorator"
 
 @Component({})
 export default class Maplocation extends Vue {
     private id = 0 // 使用 marker点击事件 需要填写id
-    private title = 'map'
+    private title = "map"
     private latitude = 39.909
     private longitude = 116.39742
     private covers = [
         {
             latitude: 39.909,
             longitude: 116.39742,
-            iconPath: '../../../static/location.png',
+            iconPath: "../../../static/location.png",
         },
         {
             latitude: 39.9,
             longitude: 116.39,
-            iconPath: '../../../static/location.png',
+            iconPath: "../../../static/location.png",
         },
     ]
     private address =
-        '宁波市公安局北仑分局交通警察北仑庐山西路华东医药有限公司西门1289号'
+        "宁波市公安局北仑分局交通警察北仑庐山西路华东医药有限公司西门1289号"
+
+    private goLocation() {
+        uni.navigateTo({
+            url:'/pages/location/location'
+        })
+    }
 }
 </script>
 
