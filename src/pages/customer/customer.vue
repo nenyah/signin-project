@@ -31,9 +31,9 @@
                         <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
                                        thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
                                        thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="张医生" note="138****8868" show-arrow="{{false}}"></uni-list-item>
-                        <uni-list-item title="李院长" note="130****8868" show-arrow="{{false}}"></uni-list-item>
-                        <uni-list-item title="王科长" note="139****8868" show-arrow="{{false}}"></uni-list-item>
+                        <uni-list-item title="张医生" note="138****8868" show-arrow="false"></uni-list-item>
+                        <uni-list-item title="李院长" note="130****8868" show-arrow="false"></uni-list-item>
+                        <uni-list-item title="王科长" note="139****8868" show-arrow="false"></uni-list-item>
                         <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
                                        thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
                                        thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
