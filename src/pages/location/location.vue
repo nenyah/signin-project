@@ -1,6 +1,98 @@
 <template>
     <view>
         位置页
+<!--        <view-->
+<!--            a:if="{{search}}"-->
+<!--            class="flex flex-col"-->
+<!--        >-->
+<!--            <search-bar-->
+<!--                placeholder="搜索"-->
+<!--                focus="{{true}}"-->
+<!--                onClear="handleClear"-->
+<!--                onCancel="handleCancel"-->
+<!--                onSubmit="handleSubmit"-->
+<!--                showCancelButton="{{false}}"-->
+<!--                class="w-4-5 mx-auto my-5"-->
+<!--            ></search-bar>-->
+<!--            <list>-->
+<!--                <block a:for="{{searchItems}}">-->
+<!--                    <list-item-->
+<!--                        index="{{index}}"-->
+<!--                        onClick="onSearchItemClick"-->
+<!--                        data-item="{{item}}"-->
+<!--                        key="items-{{index}}"-->
+<!--                        last="{{index === (items.length - 1)}}"-->
+<!--                        multipleLine="{{true}}"-->
+<!--                    >-->
+<!--                        <view class="flex">-->
+<!--                            <view class="w-5-6 no-wrap">-->
+<!--                                <view class="text-sm">-->
+<!--                                    {{item.title}}-->
+<!--                                </view>-->
+<!--                                <view class="color-label text-xs">{{item.brief}}</view>-->
+<!--                            </view>-->
+<!--                            <view-->
+<!--                                a:if="{{item.selected}}"-->
+<!--                                class="m-auto"-->
+<!--                            >-->
+<!--                                <icon type="success_no_circle"></icon>-->
+<!--                            </view>-->
+<!--                        </view>-->
+<!--                    </list-item>-->
+<!--                </block>-->
+<!--            </list>-->
+<!--        </view>-->
+
+<!--        <view a:else>-->
+<!--            <view class="flex bg-color-white items-center justify-around">-->
+<!--                <input-->
+<!--                    placeholder="搜索"-->
+<!--                    class="w-4-5 h-10 radius-2"-->
+<!--                    onFocus="changeToSearch"-->
+<!--                />-->
+<!--                <button-->
+<!--                    size="mini"-->
+<!--                    type="primary"-->
+<!--                    class="w-1-5"-->
+<!--                    onTap="comfirm"-->
+<!--                >确定</button>-->
+<!--            </view>-->
+<!--            <map-->
+<!--                id="map"-->
+<!--                longitude="{{location[0]}}"-->
+<!--                latitude="{{location[1]}}"-->
+<!--                onControlTap="controltap"-->
+<!--                show-location="{{hasLocation}}"-->
+<!--                controls="{{controls}}"-->
+<!--                markers="{{markers}}"-->
+<!--                style="width:100%;height:50vh;"-->
+<!--            ></map>-->
+<!--            <list>-->
+<!--                <scroll-view-->
+<!--                    scroll-y="{{true}}"-->
+<!--                    style="height: 40vh;"-->
+<!--                >-->
+<!--                    <block a:for="{{items}}">-->
+<!--                        <list-item-->
+<!--                            index="{{index}}"-->
+<!--                            onClick="onItemClick"-->
+<!--                            key="items-{{index}}"-->
+<!--                            last="{{index === (items.length - 1)}}"-->
+<!--                            multipleLine="{{true}}"-->
+<!--                            lowerSubtitle="{{item.brief}}"-->
+<!--                        >-->
+<!--                            {{item.title}}-->
+<!--                            <view-->
+<!--                                a:if="{{item.selected}}"-->
+<!--                                slot="extra"-->
+<!--                            >-->
+<!--                                <icon type="success_no_circle"></icon>-->
+<!--                            </view>-->
+<!--                        </list-item>-->
+<!--                    </block>-->
+<!--                </scroll-view>-->
+<!--            </list>-->
+<!--        </view>-->
     </view>
 </template>
 

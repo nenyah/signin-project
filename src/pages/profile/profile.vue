@@ -1,6 +1,76 @@
 <template>
     <view>
         个人页
+<!--        <view class="sep-line bg-color-white py-2 map-bg">-->
+<!--            <view class="flex border-1 radius-5 w-32 justify-center p-1 m-2 bg-color-white color-label" onTap="pickMonth">-->
+<!--                <view class="fa fa-calendar mx-1" aria-hidden="true">-->
+<!--                </view>-->
+<!--                <view>-->
+<!--                    {{month}}-->
+<!--                </view>-->
+<!--                <view class="fa fa-angle-down" aria-hidden="true">-->
+<!--                </view>-->
+<!--            </view>-->
+<!--            <view class="flex justify-around">-->
+<!--                <view class="flex items-center">-->
+<!--                    <view-->
+<!--                        class="w-16 h-16 circle m-2 bg-color-primary color-white font-black text-xl flex justify-center items-center">-->
+<!--                        {{userInfo.username.length>2?userInfo.username.substr(0,2):userInfo.username}}-->
+<!--                    </view>-->
+<!--                    <view>-->
+<!--                        <view class="text-lg font-bold">-->
+<!--                            {{userInfo.username}}-->
+<!--                        </view>-->
+<!--                        <view class="my-2">-->
+<!--                            本月签到-->
+<!--                            <text class="color-primary">{{items[0].userSignCount}}</text>-->
+<!--                            次-->
+<!--                        </view>-->
+<!--                        <view class="color-label text-xs">-->
+<!--                            {{company}}-->
+<!--                        </view>-->
+<!--                    </view>-->
+<!--                </view>-->
+<!--                <view class="color-primary self-end" onTap="goToHistory">-->
+<!--                    签到历史分布 >-->
+<!--                </view>-->
+<!--            </view>-->
+<!--        </view>-->
+<!--        <view class="bg-color-disabled-white">-->
+<!--            <block a:if="{{items.length>0}}">-->
+<!--                <view a:for="{{items[0].userSignVOList}}" a:key="{{item.id}}" class="bg-color-white my-3 py-2">-->
+<!--                    <view class="text-xs color-label mx-5">-->
+<!--                        {{item.date}}-->
+<!--                    </view>-->
+<!--                    <view class="bg-border m-5 radius-5 px-5" onTap="handleItemClick">-->
+<!--                        <view class="flex sep-line py-2 my-2 text-black">-->
+<!--                            <view class="w-1-5">{{item.time.substr(0,5)}}</view>-->
+<!--                            <view class="w-4-5">{{item.org.name}}</view>-->
+<!--                        </view>-->
+<!--                        <view class="my-2">-->
+<!--                            <view class="text-sm color-label my-2">签到地点</view>-->
+<!--                            <view class="text-sm">{{item.detailPlace}}</view>-->
+<!--                        </view>-->
+<!--                        <view class="my-2" a:if="{{item.imgUrlList}}">-->
+<!--                            <view class="text-sm color-label my-2">签到图片</view>-->
+<!--                            <view class="flex">-->
+<!--                                <block a:for="{{item.imgUrlList}}" a:for-item="pic">-->
+<!--                                    <image src="{{pic}}" mode="aspectFill" class="w-16 h-16 mx-1 bg-color-white" data-src="{{pic}}"-->
+<!--                                           catchTap="previewImg" key="{{pic}}"/>-->
+<!--                                </block>-->
+<!--                            </view>-->
+<!--                        </view>-->
+<!--                    </view>-->
+<!--                </view>-->
+<!--            </block>-->
+<!--            <block a:else>-->
+<!--                <image-->
+<!--                    style="background-color: #ffffff; width: 100%; height:300px;"-->
+<!--                    mode="aspectFill"-->
+<!--                    src="/assets/images/error-view/empty.png"-->
+<!--                />-->
+<!--            </block>-->
+<!--        </view>-->
     </view>
 </template>
 
