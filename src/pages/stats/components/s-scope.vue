@@ -69,9 +69,5 @@ export default class SScope extends Vue {
 </script>
 
 <style scoped lang="scss">
-.map-bg {
-    background: url('/static/images/map_bg.png');
-    background-size: 100%;
-    background-repeat: no-repeat;
-}
+
 </style>

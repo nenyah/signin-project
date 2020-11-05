@@ -38,4 +38,9 @@ export default Vue.extend({
 page {
     font-size: 10px;
 }
+.map-bg {
+    background: url('/static/images/map_bg.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
 </style>

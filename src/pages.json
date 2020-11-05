@@ -2,6 +2,12 @@
   "pages": [
     //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
     {
+      "path": "pages/profile/profile",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
       "path": "pages/location/location",
       "style": {
         "navigationBarTitleText": "地点微调"
@@ -13,7 +19,6 @@
         "navigationBarTitleText": "统计"
       }
     },
-
     {
       "path": "pages/submit/submit",
       "style": {
@@ -36,13 +41,6 @@
       "path": "pages/detail/detail",
       "style": {
         "navigationBarTitleText": "签到详情"
-      }
-    },
-
-    {
-      "path": "pages/profile/profile",
-      "style": {
-        "navigationBarTitleText": "我的"
       }
     }
   ],
