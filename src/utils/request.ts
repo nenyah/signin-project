@@ -20,16 +20,17 @@ interface Config {
 
     [x: string]: string
 }
-export default (params: IParams): Promise<any> => {
+
+const fetch = (params: IParams): Promise<any> => {
     // 加载中
     uni.showLoading({
-        title: '加载中',
+        title: "加载中",
     })
     return new Promise((resolve, reject) => {
-        
+
         let defaultParams = {
-            timeout: 10000,
             ...params,
+            timeout: 10000,
             url:
                 (params.base_url ? params.base_url : appConfig.apiUrl) +
                 params.url,
@@ -40,7 +41,7 @@ export default (params: IParams): Promise<any> => {
             header: (() => {
                 const tokenValue = token.get()
                 let config: Config = {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 }
                 if (tokenValue) {
                     config[appConfig.tokenKey] = tokenValue
@@ -58,4 +59,12 @@ export default (params: IParams): Promise<any> => {
             },
         })
     })
+}
+export default {
+    post: (url: string, data: any) => {
+        return fetch({url, method: "POST", data})
+    },
+    get: (url: string, data: any) => {
+        return fetch({url, method: "GET", data})
+    }
 }

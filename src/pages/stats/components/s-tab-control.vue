@@ -28,8 +28,8 @@ import {Component, Prop, Vue} from "vue-property-decorator"
 export default class STabControl extends Vue {
     @Prop()
     private item!: []
-    @Prop()
-    private activeTab = 0
+    @Prop({default: 0})
+    private activeTab!: number
 
     private itemClick(index: number) {
         console.log("change index:::", index)
