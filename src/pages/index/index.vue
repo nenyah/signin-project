@@ -20,10 +20,10 @@
 
 <script lang="ts">
 import {Component, Vue} from "vue-property-decorator"
-import Header from "./header/header.vue"
-import Org from "./org/org.vue"
-import Signin from "./signin/signin.vue"
-import Maplocation from "./maplocation/maplocation.vue"
+import Header from "./components/header.vue"
+import Org from "./components/org.vue"
+import Signin from "./components/signin.vue"
+import Maplocation from "./components/maplocation.vue"
 
 @Component({
     components: {

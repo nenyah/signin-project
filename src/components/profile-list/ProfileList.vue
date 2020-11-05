@@ -22,7 +22,7 @@
 </template>
 <script lang="ts">
 import {Component, Prop, Vue} from "vue-property-decorator"
-import CardItem from "@/pages/profile/CardItem.vue"
+import CardItem from "@/components/card-item/CardItem.vue"
 import {UserSignVO} from "@/common/interface"
 
 @Component({

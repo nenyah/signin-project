@@ -15,8 +15,8 @@
 
 <script lang="ts">
 import {Component, Vue} from "vue-property-decorator"
-import ProfileScope from "./ProfileScope.vue"
-import ProfileList from "./ProfileList.vue"
+import ProfileScope from "./components/ProfileScope.vue"
+import ProfileList from "@/components/profile-list/ProfileList.vue"
 import {SignHistory} from "@/common/interface"
 
 @Component({
