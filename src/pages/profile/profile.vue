@@ -26,7 +26,7 @@ import {SignHistory} from "@/common/interface"
     },
 })
 export default class Profile extends Vue {
-    private items:SignHistory[] = [{
+    private items: SignHistory[] = [{
         jobNumber: "PO0123",
         userName: "张三",
         userSignCount: 10,
@@ -75,7 +75,6 @@ export default class Profile extends Vue {
                 longitude: "120.12703000",
                 latitude: "30.27392300"
             }
-
         ]
     }]
 };

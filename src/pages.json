@@ -2,6 +2,12 @@
   "pages": [
     //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
     {
+      "path": "pages/history/history",
+      "style": {
+        "navigationBarTitleText": "签到地点分布"
+      }
+    },
+    {
       "path": "pages/profile/profile",
       "style": {
         "navigationBarTitleText": "我的"
