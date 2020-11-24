@@ -10,14 +10,14 @@
 
 <script lang="ts">
 import {Component, Prop, Vue} from "vue-property-decorator"
-import {UserSignVO} from "@/common/interface"
+import {IUserSignVO} from "@/common/interface"
 import SignList from "@/pages/stats/components/SignList.vue"
 import NosignList from "@/pages/stats/components/NosignList.vue"
 @Component({
     components: {NosignList, SignList}
 })
 export default class SPersonCards extends Vue {
-    @Prop() private signRecords!: UserSignVO[]
+    @Prop() private signRecords!: IUserSignVO[]
     @Prop() private activeIndex!: number
     @Prop() private notSignRecords!: []
 }

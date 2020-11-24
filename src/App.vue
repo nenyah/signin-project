@@ -7,18 +7,24 @@
 -->
 <script lang="ts">
 import Vue from "vue"
+import {mapActions} from "vuex"
 
 export default Vue.extend({
     mpType: "app",
+    methods: {
+        ...mapActions(["initApp"])
+    },
     onLaunch() {
         console.log("App Launch")
     },
     onShow() {
+        this.initApp()
         console.log("App Show")
     },
     onHide() {
         console.log("App Hide")
     },
+
 })
 </script>
 
@@ -35,9 +41,11 @@ export default Vue.extend({
     line-clamp: 2;
     -webkit-box-orient: vertical;
 }
+
 page {
     font-size: 10px;
 }
+
 .map-bg {
     background: url('/static/images/map_bg.png');
     background-size: 100%;

@@ -17,7 +17,7 @@
 import {Component, Vue} from "vue-property-decorator"
 import ProfileScope from "./components/ProfileScope.vue"
 import ProfileList from "@/components/profile-list/ProfileList.vue"
-import {SignHistory} from "@/common/interface"
+import {ISignHistory} from "@/common/interface"
 
 @Component({
     components: {
@@ -26,7 +26,7 @@ import {SignHistory} from "@/common/interface"
     },
 })
 export default class Profile extends Vue {
-    private items: SignHistory[] = [{
+    private items: ISignHistory[] = [{
         jobNumber: "PO0123",
         userName: "张三",
         userSignCount: 10,

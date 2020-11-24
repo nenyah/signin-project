@@ -62,7 +62,7 @@
 
 <script lang="ts">
 import {Component, Vue} from "vue-property-decorator"
-import {SignHistory} from "@/common/interface"
+import {ISignHistory} from "@/common/interface"
 
 @Component({})
 export default class History extends Vue {
@@ -84,7 +84,7 @@ export default class History extends Vue {
     ]
     private history = true
     private pageProfile = false
-    private items: SignHistory[] = [
+    private items: ISignHistory[] = [
         {
             jobNumber: "PO0123",
             userName: "张三",

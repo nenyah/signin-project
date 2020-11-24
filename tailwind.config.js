@@ -1,10 +1,3 @@
-/*
- * @Description:
- * @Author: Steven
- * @Date: 2020-10-27 16:16:22
- * @LastEditors: Steven
- * @LastEditTime: 2020-10-29 13:21:26
- */
 module.exports = {
     future: {
         removeDeprecatedGapUtilities: true,
@@ -250,7 +243,6 @@ module.exports = {
                     tred: '#FF0000',
                     tgreen: '#00FF00',
                     tblue: '#0000FF',
-
                     hue0: '#FF0000',
                     hue30: '#FF7F00',
                     hue60: '#FFFF00',

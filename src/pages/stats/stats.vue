@@ -33,7 +33,7 @@ import {Component, Vue} from "vue-property-decorator"
 import SScope from "./components/s-scope.vue"
 import STabControl from "./components/s-tab-control.vue"
 import SPersonCards from "./components/s-person-cards.vue"
-import {UserSignVO} from "@/common/interface"
+import {IUserSignVO} from "@/common/interface"
 
 @Component({
     components: {
@@ -46,7 +46,7 @@ export default class Stats extends Vue {
     private dept = "信息管理中心"
     private tabs = [{title: 7, subTitle: "已签到"}, {title: 0, subTitle: "未签到"}]
     private activeTab = 1
-    private items: UserSignVO[] = [{
+    private items: IUserSignVO[] = [{
         count: 0,
         jobNumber: "NB1466",
         org: {id: 6853, name: "西岗区悦美雅医疗美容诊所"},

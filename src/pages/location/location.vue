@@ -63,7 +63,7 @@ import uniSearchBar from "@/components/uni-search-bar/uni-search-bar.vue"
     }
 })
 export default class Location extends Vue {
-    private search = true
+    private search = false
     private id = 0 // 使用 marker点击事件 需要填写id
     private title = "map"
     private latitude = 39.909

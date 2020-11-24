@@ -23,12 +23,12 @@
 <script lang="ts">
 import {Component, Prop, Vue} from "vue-property-decorator"
 import CardItem from "@/components/card-item/CardItem.vue"
-import {UserSignVO} from "@/common/interface"
+import {IUserSignVO} from "@/common/interface"
 
 @Component({
     components: {CardItem}
 })
 export default class ProfileList extends Vue {
-    @Prop() private userSignVOList!:UserSignVO[]
+    @Prop() private userSignVOList!:IUserSignVO[]
 }
 </script>

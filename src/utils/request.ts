@@ -5,18 +5,18 @@
  * @LastEditors: Steven
  * @LastEditTime: 2020-10-23 15:33:02
  */
-import {token} from "./token"
-import {appConfig} from "@/common/config"
+import { token } from './token'
+import { appConfig } from '@/common/config'
 
 interface IParams {
     url: string
-    method?: "GET" | "POST" | "PUT"
+    method?: 'GET' | 'POST' | 'PUT'
     base_url?: boolean
     data?: any
 }
 
 interface Config {
-    "Content-Type": string
+    'Content-Type': string
 
     [x: string]: string
 }
@@ -24,16 +24,13 @@ interface Config {
 const fetch = (params: IParams): Promise<any> => {
     // 加载中
     uni.showLoading({
-        title: "加载中",
+        title: '加载中'
     })
     return new Promise((resolve, reject) => {
-
         let defaultParams = {
             ...params,
             timeout: 10000,
-            url:
-                (params.base_url ? params.base_url : appConfig.apiUrl) +
-                params.url,
+            url: (params.base_url ? params.base_url : appConfig.apiUrl) + params.url
         }
         console.log(`正在请求：${defaultParams.url}`)
         uni.request({
@@ -41,7 +38,7 @@ const fetch = (params: IParams): Promise<any> => {
             header: (() => {
                 const tokenValue = token.get()
                 let config: Config = {
-                    "Content-Type": "application/json",
+                    'Content-Type': 'application/json'
                 }
                 if (tokenValue) {
                     config[appConfig.tokenKey] = tokenValue
@@ -56,15 +53,15 @@ const fetch = (params: IParams): Promise<any> => {
             },
             complete() {
                 uni.hideLoading()
-            },
+            }
         })
     })
 }
 export default {
     post: (url: string, data: any) => {
-        return fetch({url, method: "POST", data})
+        return fetch({ url, method: 'POST', data })
     },
     get: (url: string, data: any) => {
-        return fetch({url, method: "GET", data})
+        return fetch({ url, method: 'GET', data })
     }
 }
