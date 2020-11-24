@@ -13,7 +13,7 @@ interface State {
     location: LocationResponse
 }
 
-interface LocationResponse {
+export interface LocationResponse {
     accuracy?: number
     address?: string
     city?: string

@@ -1,7 +1,8 @@
 export const appConfig = {
-    tokenKey: 'Authorization',
+    tokenKey: "Authorization",
     apiUrl:
-        process.env.NODE_ENV === 'prod'
-            ? 'http://192.168.0.175:10002/'
-            : 'http://www1.huadongbio.com:10002/'
+        process.env.NODE_ENV === "prod"
+            ? "http://192.168.0.175:10002/"
+            : "http://www1.huadongbio.com:10002/",
+    limitRange: 200,
 }

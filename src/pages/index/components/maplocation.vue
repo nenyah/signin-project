@@ -27,6 +27,7 @@
                 :latitude="location.latitude"
                 :longitude="location.longitude"
                 :markers="covers"
+                scale="14"
                 @click="goLocation"
             >
             </map>
@@ -49,6 +50,8 @@ export default class Maplocation extends Vue {
             {
                 latitude: latitude != null ? latitude : 121.796929,
                 longitude: longitude != null ? longitude : 29.903542,
+                width: 25,
+                height: 25,
                 iconPath: "/static/images/location.png",
             },
         ]
