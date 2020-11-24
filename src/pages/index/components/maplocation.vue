@@ -6,13 +6,13 @@
  * @LastEditTime: 2020-10-29 14:18:22
 -->
 <template>
-    <view class="bg-white w-full border-0 border-b-2 border-gray-500 border-solid mb-2">
-        <view class="flex justify-between p-20  items-center">
-            <view class="text-4xl font-bold w-8_12 truncate flex-grow">
+    <view class="bg-white w-full border-0 border-b-2 border-gray-300 border-solid mb-2">
+        <view class="flex justify-between p-20  items-baseline">
+            <view class="text-4xl w-8_12 truncate flex-grow">
                 {{ address }}
             </view>
             <view
-                class="text-blue-500 text-2xl font-bold flex-shrink-0"
+                class="text-blue-500 text-3xl flex-shrink-0"
                 @click="goLocation"
             >
                 地点微调
@@ -24,8 +24,8 @@
         >
             <map
                 style="width: 100%; height: 100px;"
-                :latitude="latitude"
-                :longitude="longitude"
+                :latitude="location.latitude"
+                :longitude="location.longitude"
                 :markers="covers"
                 @click="goLocation"
             >
@@ -41,33 +41,35 @@ import {Component, Vue} from "vue-property-decorator"
 export default class Maplocation extends Vue {
     private id = 0 // 使用 marker点击事件 需要填写id
     private title = "map"
-    private latitude = 39.909
-    private longitude = 116.39742
-    private covers = [
-        {
-            latitude: 39.909,
-            longitude: 116.39742,
-            iconPath: "../../../static/location.png",
-        },
-        {
-            latitude: 39.9,
-            longitude: 116.39,
-            iconPath: "../../../static/location.png",
-        },
-    ]
-    private address =
-        "宁波市公安局北仑分局交通警察北仑庐山西路华东医药有限公司西门1289号"
+    $store: any
+
+    get covers() {
+        const {latitude, longitude} = this.$store.state.user.location
+        return [
+            {
+                latitude: latitude != null ? latitude : 121.796929,
+                longitude: longitude != null ? longitude : 29.903542,
+                iconPath: "/static/images/location.png",
+            },
+        ]
+    }
+
+
+    get address() {
+        return this.$store.getters["user/address"]
+    }
+
+    get location() {
+        return this.$store.state.user.location
+    }
 
     private goLocation() {
         uni.navigateTo({
-            url:'/pages/location/location'
+            url: "/pages/location/location"
         })
     }
 }
 </script>
 
 <style scoped>
-.px-2 {
-    border-bottom: #e2e2e2 solid 1 rpx;
-}
 </style>

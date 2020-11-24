@@ -7,7 +7,7 @@
 -->
 <template>
     <view
-        class="flex w-full text-gray-500 bg-white px-20 py-30 items-center justify-between text-2lg border-0 border-b-2 border-gray-500 border-solid"
+        class="flex w-full text-gray-500 bg-white px-20 py-30 items-center justify-between text-2lg border-0 border-b-2 border-gray-300 border-solid"
     >
         <view class="flex items-center flex-shrink">
             <view class="fa-stack text-lg mr-10">

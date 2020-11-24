@@ -23,11 +23,23 @@ interface LocationResponse {
     province?: string
 }
 
+function welcome(name: string) {
+    let welcome = ""
+    let time = new Date().getHours()
+    if (time <= 11) welcome = "上午好"
+    else if (time > 11 && time <= 13) welcome = "中午好"
+    else if (time > 13 && time <= 17) welcome = "下午好"
+    else if (time > 17) welcome = "晚上好"
+    uni.showToast({
+        title: `亲爱的${name}，${welcome}`,
+    })
+}
+
 const init: Module<State, any> = {
     namespaced: true,
     state: {
         info: new User(),
-        location: {},
+        location: {} as LocationResponse,
     },
     mutations: {
         [SET_SYNOPSIS](state, o) {
@@ -37,7 +49,12 @@ const init: Module<State, any> = {
             state.location = o
         }
     },
-    getters: {},
+    getters: {
+        address: (state): string => {
+            const {province, address} = state.location
+            return province != undefined ? province + address : ""
+        }
+    },
     actions: {
         login: ({state, commit}) => {
             console.log("enter login")
@@ -58,6 +75,7 @@ const init: Module<State, any> = {
                         token.set(tokenmsg)
                         commit("SET_IS_LOGIN", true, {root: true})
                         commit(SET_SYNOPSIS, user)
+                        welcome(user.userName)
                         resolve(res)
                     }
                 })
@@ -65,12 +83,12 @@ const init: Module<State, any> = {
         },
         getLocation: async ({state, commit}) => {
             const [err, res]: any = await uni.getLocation({})
-            if (!err) {
+            console.log("res:::", res)
+            if (err) {
                 uni.showToast({title: "获取地址错误"})
                 return
             }
             commit(SET_LOCATION, res)
-            console.log("res:::", res)
         }
     }
 }

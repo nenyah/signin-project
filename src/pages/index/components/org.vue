@@ -7,7 +7,7 @@
 -->
 <template>
     <view
-        class="flex bg-white w-full box-border items-center shadow justify-between px-20 py-10 border-0 border-b-2 border-gray-500 border-solid"
+        class="flex bg-white w-full box-border items-center shadow justify-between px-20 py-10 border-0 border-b-2 border-gray-300 border-solid"
     >
         <view class="text-4xl text-gray-900 font-bold flex-shrink-0"
             >拜访对象</view
