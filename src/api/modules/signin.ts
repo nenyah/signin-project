@@ -5,8 +5,8 @@
  * @LastEditors: Steven
  * @LastEditTime: 2020-11-05 16:11:17
  */
-import request from "@/utils/request"
-import {OrgVO, SignHistoryResponse} from "@/common/interface"
+import request from '@/utils/request'
+import { IOrgVO, ISignHistoryResponse } from '@/common/interface'
 
 interface SignRecordParams {
     current?: number
@@ -17,7 +17,7 @@ interface SignRecordParams {
 }
 
 export interface SignRecordData {
-    org: OrgVO
+    org: IOrgVO
     timeStamp: number
     imageUrlList: string[]
     place: string
@@ -28,15 +28,13 @@ export interface SignRecordData {
 }
 
 export default {
-    getSignRecord: (
-        data: SignRecordParams = {}
-    ): Promise<SignHistoryResponse> => {
-        return request.get("/ding/sign", data)
+    getSignRecord: (data: SignRecordParams = {}): Promise<ISignHistoryResponse> => {
+        return request.get('ding/sign', data)
     },
     addSignRecord: (data: SignRecordData): Promise<any> => {
-        return request.post("/ding/sign", data)
+        return request.post('ding/sign', data)
     },
     uploadImg: (data: { file: string }): Promise<string> => {
-        return request.post("/ding/sign/uploadImg", data)
-    },
+        return request.post('ding/sign/uploadImg', data)
+    }
 }

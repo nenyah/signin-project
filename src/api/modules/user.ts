@@ -1,25 +1,28 @@
-import request from "@/utils/request"
-
+import request from '@/utils/request'
+import {IUserResponse, IUserDetail} from "@/common/interface"
+interface infoParams {
+    userIds?: number[]
+}
+interface infoByCodeParams {
+    userJobNumbers?: string[]
+}
+interface infoByDeptParams {
+    deptIds?: number[]
+}
 export default {
-    ddLogin: (data: { authCode: string }) => {
-        return request.get("ding/auth", data)
+    ddLogin: (data: { authCode: string }):Promise<IUserResponse> => {
+        return request.get('ding/auth', data)
     },
-    // info: (params = {}, data = {}) => {
-    //     return request.post('portal/member/info', params, data)
-    // },
-    // cart: (params = {}, data = {}) => {
-    //     return request.post('portal/member/getCart', params, data)
-    // },
-    // addCart: (params = {}, data = {}) => {
-    //     return request.post('portal/member/addCart', params, data)
-    // },
-    // deleteCart: (params = {}, data = {}) => {
-    //     return request.post('portal/member/deleteCart', params, data)
-    // },
-    // addOrder: (params = {}, data = {}) => {
-    //     return request.post('portal/member/addOrder', params, data)
-    // },
-    // getOrderPage: (params = {}, data = {}) => {
-    //     return request.post('portal/member/getOrderPage', params, data)
-    // }
+    infoByUserIds: (data: infoParams = {}): Promise<IUserDetail[]> => {
+        return request.get('user', data)
+    },
+    infoByCode: (data: infoByCodeParams = {}): Promise<IUserDetail[]> => {
+        return request.get('user/bycode', data)
+    },
+    infoByDept: (data: infoByDeptParams = {}): Promise<IUserDetail[]> => {
+        return request.get('user/dept', data)
+    },
+    infoWithSub: (data: infoParams = {}): Promise<IUserDetail[]> => {
+        return request.get('user/sub', data)
+    }
 }
