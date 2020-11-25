@@ -1,17 +1,31 @@
 <template>
     <view>
-        <uni-search-bar @confirm="search" @input="input"></uni-search-bar>
-        <uni-list v-if="search">
-            <uni-list-item
+        <view class="flex">
+            <uni-search-bar @confirm="search" @input="input" @cancel="cancel"></uni-search-bar>
+            <view class="p-0-5" v-if="!searching">
+                <view class="w-100 bg-blue-500 text-white rounded-lg text-center my-2 p-1 text-2xl">确定</view>
+            </view>
+        </view>
+        <scroll-view
+            v-if="searched"
+            :scroll-y="true"
+            style="height: 100vh;"
+            :scroll-top="scrollTop"
+            @scroll="scroll"
+        >
+            <t-list-item
                 v-for="(item,index) in searchItems"
-                @click="onSearchItemClick"
                 :key="index"
+                @click="onItemClick(index)"
                 :title="item.title"
                 :note="item.address"
+                clickable
             >
-            </uni-list-item>
-        </uni-list>
-
+                <template slot="footer">
+                    <view v-if="item.selected" class="fa fa-check fa-lg text-blue-400"></view>
+                </template>
+            </t-list-item>
+        </scroll-view>
         <view v-else>
             <map
                 :id="id"
@@ -30,8 +44,8 @@
                 :scroll-top="scrollTop"
                 @scroll="scroll"
             >
-                <uni-list>
-                    <uni-list-item
+                <view class="bg-gray-300">
+                    <t-list-item
                         v-for="(item,index) in items"
                         :key="index"
                         @click="onItemClick(index)"
@@ -39,12 +53,12 @@
                         :note="item.address"
                         clickable
                     >
-                        <!-- 自定义 footer-->
                         <template slot="footer">
-                            <view v-if="item.selected" class="fa fa-hand-o-left"></view>
+                            <view v-if="item.selected" class="fa fa-check fa-lg text-blue-400"></view>
                         </template>
-                    </uni-list-item>
-                </uni-list>
+                    </t-list-item>
+                </view>
+
             </scroll-view>
 
         </view>
@@ -57,6 +71,7 @@ import {Component, Vue} from "vue-property-decorator"
 import uniList from "@/components/uni-list/uni-list.vue"
 import uniListItem from "@/components/uni-list-item/uni-list-item.vue"
 import uniSearchBar from "@/components/uni-search-bar/uni-search-bar.vue"
+import TListItem from "@/components/t-list-item/t-list-item.vue"
 import amap from "@/libs/amap-dd"
 
 interface Item {
@@ -73,10 +88,12 @@ interface Item {
         uniList,
         uniListItem,
         uniSearchBar,
+        TListItem,
     }
 })
 export default class Location extends Vue {
-    private search = false
+    private searched = false
+    private searching = false
     private id = 0 // 使用 marker点击事件 需要填写id
     private title = "map"
     private hasLocation = true
@@ -136,6 +153,10 @@ export default class Location extends Vue {
         return this.$store.state.user.location
     }
 
+    private input() {
+        this.searching = true
+    }
+
     private controlTap() {
         console.log("点击控制点:::")
         this.$store.dispatch("user/getLocation")
@@ -164,15 +185,33 @@ export default class Location extends Vue {
         this.old.scrollTop = e.detail.scrollTop
     }
 
-    private goTop(e: any) {
+    private goTop() {
         this.scrollTop = this.old.scrollTop
         this.$nextTick(function () {
             this.scrollTop = 0
         })
     }
+
+    private search(value: any) {
+        console.log("search:::", value)
+        this.searched = true
+        this.searchItems = this.items.filter((item) => {
+            return item.title.includes(value.value) || item.address.includes(value.value) || item.province.includes(value.value)
+        })
+    }
+
+    private cancel() {
+        this.searched = false
+    }
 };
 </script>
 
 <style scoped>
+.p-0-5 {
+    padding: 0.15rem;
+}
 
+.p-1 {
+    padding: 0.15rem;
+}
 </style>
