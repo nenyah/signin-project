@@ -8,10 +8,7 @@
             @scrolltolower="lower"
             @scroll="scroll"
         >
-            <view
-                class="bg-white"
-                :class="navShow?'nav':''"
-            >
+            <view class="bg-white" :class="navShow ? 'nav' : ''">
                 <uni-search-bar
                     placeholder="搜索"
                     radius="50"
@@ -19,70 +16,47 @@
                 >
                 </uni-search-bar>
             </view>
-            <block v-if="numClients>0">
-                <view class="ml-2">
-                    共 {{ numClients }} 家
-                </view>
-                <scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper"
-                             @scrolltolower="lower"
-                             @scroll="scroll">
-                    <!-- 左侧显示略缩图、图标 -->
-                    <uni-list>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="张医生" note="138****8868" show-arrow="false"></uni-list-item>
-                        <uni-list-item title="李院长" note="130****8868" show-arrow="false"></uni-list-item>
-                        <uni-list-item title="王科长" note="139****8868" show-arrow="false"></uni-list-item>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                        <uni-list-item title="宁波第一医院" note="宁波第一医院详细地址北仑区新大路100098号"
-                                       thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png"
-                                       thumb-size="lg" rightText="查看联系人" @click="expand"></uni-list-item>
-                    </uni-list>
+            <block v-if="items.length > 0">
+                <view class="ml-2"> 共 {{ total }} 家</view>
+                <scroll-view
+                    :scroll-top="scrollTop"
+                    scroll-y="true"
+                    class="scroll-Y"
+                    @scrolltoupper="upper"
+                    @scrolltolower="lower"
+                    @scroll="scroll"
+                >
+                    <view v-for="(item, index) in items" :key="index">
+                        <t-list-item
+                            :title="item.name"
+                            :note="item.address"
+                            :tag="item.orgGroup.name"
+                            @click="goIndex(item.id)"
+                        >
+                            <template slot="header">
+                                <view
+                                    class="flex bg-blue-500 w-100 h-100 rounded-full justify-center items-center text-white mr-1">
+                                    {{ item.name.substr(0, 3) }}
+                                </view>
+                            </template>
+                            <template slot="footer" @click="expand(item.id)">
+                                <view v-if="item.expanded" class="fa fa-chevron-up">
+                                </view>
+                                <view v-else class="fa fa-chevron-down">
+                                </view>
+                            </template>
+                        </t-list-item>
+                        <view v-if="item.expanded">
+                            <t-list-item
+                                v-for="(customer, idx) in item.customerList"
+                                :key="idx"
+                                :title="customer.name"
+                                :note="customer.mobile"
+                                @click="goIndex(item.id)"
+                            >
+                            </t-list-item>
+                        </view>
+                    </view>
                 </scroll-view>
             </block>
             <uni-load-more :status="more"></uni-load-more>
@@ -91,13 +65,16 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue} from "vue-property-decorator"
-import uniSearchBar from "@/components/uni-search-bar/uni-search-bar.vue"
-import uniCollapse from "@/components/uni-collapse/uni-collapse.vue"
-import uniCollapseItem from "@/components/uni-collapse-item/uni-collapse-item.vue"
-import uniList from "@/components/uni-list/uni-list.vue"
-import uniListItem from "@/components/uni-list-item/uni-list-item.vue"
-import uniLoadMore from "@/components/uni-load-more/uni-load-more.vue"
+import {Component, Vue} from 'vue-property-decorator'
+import uniSearchBar from '@/components/uni-search-bar/uni-search-bar.vue'
+import uniCollapse from '@/components/uni-collapse/uni-collapse.vue'
+import uniCollapseItem from '@/components/uni-collapse-item/uni-collapse-item.vue'
+import uniList from '@/components/uni-list/uni-list.vue'
+import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
+import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue'
+import TListItem from '@/components/t-list-item/t-list-item.vue'
+import {IOrg} from '@/common/interface'
+
 @Component({
     components: {
         uniSearchBar,
@@ -106,38 +83,63 @@ import uniLoadMore from "@/components/uni-load-more/uni-load-more.vue"
         uniList,
         uniListItem,
         uniLoadMore,
-    }
+        TListItem,
+    },
 })
 export default class Customer extends Vue {
     private navShow = true
-    private numClients = 8
-    private items = []
-    private more = "more"
+    private expanded = false
+    $store: any
+
+    get more() {
+        return this.$store.state.customer.more
+    }
+
+    get items() {
+        return this.$store.state.customer.orgs
+    }
+
+    get total() {
+        return this.$store.state.customer.total
+    }
+
+
+    onLoad() {
+        this.$store.dispatch('customer/getCustomer')
+    }
+
+    private goIndex(id: number) {
+        console.log('goIndex:::', id)
+        const item = this.items.find((item: IOrg) => {
+            return item.id === id
+        })
+        this.$store.commit('customer/SET_ORG', item)
+        uni.navigateBack({})
+    }
+
+    private expand(id: number) {
+        console.log('expand:::')
+        this.$store.commit('customer/CHANGE_EXPANDED', id)
+    }
 
     private upper() {
-
     }
 
     private lower() {
-
+        console.log('lower:::')
+        this.$store.dispatch('customer/getCustomer')
     }
 
     private scroll() {
-
     }
 
-    private search() {
+    private search(val: any) {
+        console.log('search', val)
     }
 
     private change() {
     }
-
-    private expand() {
-        console.log("expand:::")
-    }
-};
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

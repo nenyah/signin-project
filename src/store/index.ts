@@ -1,13 +1,16 @@
-import Vue from "vue"
-import Vuex from "vuex"
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-import user from "./user"
+import user from './user'
+import customer from './customer'
+
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
     modules: {
-        user
+        user,
+        customer
     },
     state: {
         isLogin: false
@@ -19,14 +22,16 @@ const store = new Vuex.Store({
     },
     actions: {
         async initApp({dispatch, commit}) {
-            console.log("enter initApp")
+            console.log('enter initApp')
             try {
-                // 1. 用户登录
-                await dispatch("user/login")
+                //    1. 用户登录
+                await dispatch('user/login')
                 //    2. 获取定位
-                await dispatch("user/getLocation")
+                await dispatch('user/getLocation')
+                //    3. 更新时间
+                commit('user/updateCtime')
             } catch (e) {
-                console.log("登录失败", e)
+                console.log('登录失败', e)
             }
         }
     }

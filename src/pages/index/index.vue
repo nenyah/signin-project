@@ -10,16 +10,16 @@
         <!-- 头部 -->
         <Header></Header>
         <!-- 地图 -->
-        <Maplocation />
+        <Maplocation/>
         <!--选择人员-->
-        <Org></Org>
+        <Org :client="client"></Org>
         <!--签到-->
         <Signin></Signin>
     </view>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import {Component, Vue} from 'vue-property-decorator'
 import Header from './components/header.vue'
 import Org from './components/org.vue'
 import Signin from './components/signin.vue'
@@ -33,5 +33,11 @@ import Maplocation from './components/maplocation.vue'
         Signin
     }
 })
-export default class Index extends Vue {}
+export default class Index extends Vue {
+    $store: any
+
+    get client() {
+        return this.$store.state.customer.org
+    }
+}
 </script>

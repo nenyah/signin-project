@@ -5,7 +5,7 @@
  * @LastEditors: Steven
  * @LastEditTime: 2020-11-23 14:35:03
  */
-import { ICustomer, IOrg, IOrgGroup } from '@/common/interface'
+import {ICustomer, IOrg, IOrgGroup} from "@/common/interface"
 
 export class Org implements IOrg {
     orgGroup: IOrgGroup
@@ -18,7 +18,8 @@ export class Org implements IOrg {
     outId: string
     longitude: number
     latitude: number
-    constructor(org: IOrg) {
+
+    constructor(org: IOrg = {} as IOrg) {
         const {
             orgGroup,
             customerList,

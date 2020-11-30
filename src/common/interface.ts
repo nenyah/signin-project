@@ -18,6 +18,7 @@ export interface IOrg {
     outId: string
     longitude: number
     latitude: number
+    expanded?: boolean
 }
 
 export interface ICustomer {
@@ -147,15 +148,15 @@ export interface IDeptResponse {
 
 // 用户基本信息
 export interface IUserResponse {
-    user: IUserBrief;
-    token: string;
+    user: IUserBrief
+    token: string
 }
 
 export interface IUserBrief {
-    dingUserId: string;
-    dingDeptId: string[];
-    avatar: string;
-    jobNumber: string;
-    userName: string;
-    selectOrg: boolean;
+    dingUserId: string
+    dingDeptId: string[]
+    avatar: string
+    jobNumber: string
+    userName: string
+    selectOrg: boolean
 }

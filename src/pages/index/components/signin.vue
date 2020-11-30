@@ -26,7 +26,7 @@
                 >
                 </view>
                 今日你已签到
-                <text class="color-warning">{{ checkTimes }} </text>
+                <text class="color-warning">{{ checkTimes }}</text>
                 次
             </view>
             <view v-else class="text-gray-700 text-3xl">今日你还没有签到</view>
@@ -38,15 +38,20 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import moment from 'moment'
+import {Component, Vue} from 'vue-property-decorator'
+
 @Component({})
 export default class Signin extends Vue {
     private checkTimes = 0
-    private ctime = moment().format('HH:mm')
+    $store: any
+
+    get ctime() {
+        return this.$store.state.user.ctime.format('HH:mm')
+    }
+
     private goSubmit() {
         uni.navigateTo({
-            url:"/pages/submit/submit"
+            url: '/pages/submit/submit'
         })
     }
 }
