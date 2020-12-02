@@ -18,14 +18,14 @@
                 <view class="text-gray-300 text-3xl">签到</view>
                 <view class="text-white text-5xl">{{ ctime }}</view>
             </view>
-            <view v-if="checkTimes" class="text-gray-700 text-3xl">
+            <view v-if="checkTimes>0" class="text-gray-700 text-3xl">
                 <view
-                    class="fa fa-check-circle-o color-green mx-1"
+                    class="fa fa-check-circle-o text-green-500 mx-1"
                     aria-hidden="true"
                 >
                 </view>
                 今日你已签到
-                <text class="color-warning">{{ checkTimes }}</text>
+                <text class="text-orange-900">{{ checkTimes }}</text>
                 次
             </view>
             <view v-else class="text-gray-700 text-3xl">今日你还没有签到</view>
@@ -41,7 +41,6 @@ import {Component, Vue} from 'vue-property-decorator'
 
 @Component({})
 export default class Signin extends Vue {
-    private checkTimes = 0
     $store: any
 
     get ctime() {
@@ -56,6 +55,13 @@ export default class Signin extends Vue {
     get user() {
         return this.$store.state.user.info
     }
+
+    get checkTimes() {
+        const signinRecordToday = this.$store.state.signin.signinRecordToday
+        console.log('checkTimes:::', signinRecordToday)
+        return signinRecordToday.userSignCount || 0
+    }
+
 
     private goSubmit() {
         // 1. 判断要不要选择客户

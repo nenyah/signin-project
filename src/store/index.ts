@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import user from './user'
 import customer from './customer'
+import signin from './signin'
 
 
 Vue.use(Vuex)
@@ -10,7 +11,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     modules: {
         user,
-        customer
+        customer,
+        signin,
     },
     state: {
         isLogin: false
@@ -24,11 +26,13 @@ const store = new Vuex.Store({
         async initApp({dispatch, commit}) {
             console.log('enter initApp')
             try {
-                //    1. 用户登录
+                // 1. 用户登录
                 await dispatch('user/login')
-                //    2. 获取定位
+                // 2. 获取定位
                 await dispatch('user/getLocation')
-                //    3. 更新时间
+                // 3. 获取签到记录
+                await dispatch('signin/getSigninRecordToday')
+                // 4. 更新时间
                 commit('user/updateCtime')
             } catch (e) {
                 console.log('登录失败', e)
