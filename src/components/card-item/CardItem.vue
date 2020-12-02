@@ -11,7 +11,7 @@
         <view class="flex" v-if="picList.length>0">
             <image :src="pic" mode="aspectFill" class="w-100 h-100 mr-20"
                    :data-src="pic"
-                   @click.stop="previewImg" v-for="(pic,index) in picList" :key="index"/>
+                   @tap.stop="previewImg" v-for="(pic,index) in picList" :key="index"/>
         </view>
     </view>
 </template>

@@ -7,14 +7,13 @@
 -->
 <template>
     <view
-        style="background-color:#f0eff5;"
-        class="w-full text-center flex-auto flex flex-col justify-around box-border"
+        class="w-full text-center flex-auto flex flex-col justify-around box-border bg-helper-gray"
     >
         <view class="w-full flex flex-col justify-center items-center" style="height:40vh;">
             <view
                 class="rounded-full w-260 h-260 circle flex flex-col justify-center items-center mb-20"
                 style="background:#f8b55e;"
-                @click="goSubmit"
+                @tap="goSubmit"
             >
                 <view class="text-gray-300 text-3xl">签到</view>
                 <view class="text-white text-5xl">{{ ctime }}</view>
@@ -49,7 +48,22 @@ export default class Signin extends Vue {
         return this.$store.state.user.ctime.format('HH:mm')
     }
 
+    get customer() {
+        console.log('this.$store.state.customer.org', this.$store.state.customer.org)
+        return this.$store.state.customer.org
+    }
+
+    get user() {
+        return this.$store.state.user.info
+    }
+
     private goSubmit() {
+        // 1. 判断要不要选择客户
+        // 2. 要选择客户判断有没有选择
+        if (this.user.selectOrg && !this.customer.name) {
+            uni.showToast({title: '还没有选择客户哦！'})
+            return
+        }
         uni.navigateTo({
             url: '/pages/submit/submit'
         })
@@ -57,4 +71,6 @@ export default class Signin extends Vue {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+
+</style>

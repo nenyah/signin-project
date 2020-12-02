@@ -17,12 +17,12 @@
             :class="
                 client.name.length === 0 ? 'text-gray-400' : 'text-gray-900'
             "
-            @click="goCustomer"
+            @tap="goCustomer"
         >
             {{ client.name.length > 0 ? client.name : '请选择拜访客户' }}
         </view>
         <view
-            @click="goCustomer"
+            @tap="goCustomer"
             class="flex flex-col items-center justify-center"
         >
             <view

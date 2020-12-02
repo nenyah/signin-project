@@ -11,7 +11,7 @@
         >
             <view
                 class="border-2 border-gray-300 border-solid mt-10 mx-auto w-700 rounded bg-white shadow"
-                @click="goToPorfile"
+                @tap="goToPorfile"
                 :data-item="item"
             >
                 <view class="border-0 border-b-2 border-gray-300 border-solid flex items-center px-20">
@@ -53,7 +53,7 @@
                                     mode="aspectFill"
                                     class="w-100 h-100 mx-10"
                                     :data-src="pic"
-                                    @click.stop="previewImg"
+                                    @tap.stop="previewImg"
                                     :key="index"
                                 />
                             </view>

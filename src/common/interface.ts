@@ -153,10 +153,10 @@ export interface IUserResponse {
 }
 
 export interface IUserBrief {
-    dingUserId: string
-    dingDeptId: string[]
-    avatar: string
-    jobNumber: string
-    userName: string
-    selectOrg: boolean
+    dingUserId?: string
+    dingDeptId?: string[]
+    avatar?: string
+    jobNumber?: string
+    userName?: string
+    selectOrg?: boolean
 }

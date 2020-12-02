@@ -15,6 +15,15 @@ interface IParams {
     data?: any
 }
 
+interface IUploadFileParams {
+    url: string
+    filePath: string
+    name: string
+    fileType: 'image' | 'video' | 'audio'
+    base_url?: string
+    formData?: any
+}
+
 interface Config {
     'Content-Type': string
 
@@ -32,6 +41,7 @@ const fetch = (params: IParams): Promise<any> => {
             timeout: 10000,
             url: (params.base_url ? params.base_url : appConfig.apiUrl) + params.url
         }
+        console.log(`请求：${defaultParams.url}`)
         uni.request({
             ...defaultParams,
             header: (() => {
@@ -45,7 +55,46 @@ const fetch = (params: IParams): Promise<any> => {
                 return config
             })(),
             success(res) {
-                console.log(`请求：${defaultParams.url},返回结果：${JSON.stringify(res)}`)
+                console.log(`成功返回结果：${JSON.stringify(res)}`)
+                if (res.statusCode !== 200) {
+                    reject(res.data)
+                }
+                resolve(res.data)
+            },
+            fail(err) {
+                reject(err)
+            },
+            complete() {
+                uni.hideLoading()
+            }
+        })
+    })
+}
+const uploadUrl = (params: IUploadFileParams): Promise<any> => {
+    // 加载中
+    uni.showLoading({
+        title: '加载中'
+    })
+    return new Promise((resolve, reject) => {
+        let defaultParams = {
+            ...params,
+            url: (params.base_url ? params.base_url : appConfig.apiUrl) + params.url
+        }
+        console.log(`请求：${defaultParams.url}`)
+        uni.uploadFile({
+            ...defaultParams,
+            header: (() => {
+                const tokenValue = token.get()
+                let config: Config = {
+                    'Content-Type': 'application/json'
+                }
+                if (tokenValue) {
+                    config[appConfig.tokenKey] = tokenValue
+                }
+                return config
+            })(),
+            success(res) {
+                console.log(`成功返回结果：${JSON.stringify(res)}`)
                 if (res.statusCode !== 200) {
                     reject(res.data)
                 }
@@ -66,5 +115,14 @@ export default {
     },
     get: (url: string, data: any, base_url: string = '') => {
         return fetch({url, method: 'GET', data, base_url})
+    },
+    upload: (url: string,
+             filePath: string,
+             formData: {},
+             name: string = 'file',
+             fileType: 'image' = 'image',
+             base_url: string = ''
+    ) => {
+        return uploadUrl({url, filePath, name, formData, fileType, base_url})
     }
 }

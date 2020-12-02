@@ -6,7 +6,7 @@
                 {{ item.date }}
             </view>
             <view class="border border-gray-300 border-solid my-20 rounded px-50 shadow-lg"
-                  @click="handleItemClick">
+                  @tap="handleItemClick">
                 <view
                     class="flex border-0 border-b-2 border-gray-300 border-solid py-20 my-20 text-bold text-3xl">
                     <view class="flex-none w-100">{{ item.time.substr(0, 5) }}</view>

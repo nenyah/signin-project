@@ -6,7 +6,7 @@
  * @LastEditTime: 2020-11-05 16:11:17
  */
 import request from '@/utils/request'
-import { IOrgVO, ISignHistoryResponse } from '@/common/interface'
+import {IOrgVO, ISignHistoryResponse} from '@/common/interface'
 
 interface SignRecordParams {
     current?: number
@@ -34,7 +34,11 @@ export default {
     addSignRecord: (data: SignRecordData): Promise<any> => {
         return request.post('ding/sign', data)
     },
-    uploadImg: (data: { file: string }): Promise<string> => {
-        return request.post('ding/sign/uploadImg', data)
+    uploadImg: (filePath: string,
+                formData: {}
+    ): Promise<string> => {
+        return request.upload('ding/sign/uploadImg',
+            filePath,
+            formData)
     }
 }

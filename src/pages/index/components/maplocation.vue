@@ -13,7 +13,7 @@
             </view>
             <view
                 class="text-blue-500 text-3xl flex-shrink-0"
-                @click="goLocation"
+                @tap="goLocation"
             >
                 地点微调
             </view>
@@ -28,7 +28,7 @@
                 :longitude="location.longitude"
                 :markers="covers"
                 scale="14"
-                @click="goLocation"
+                @tap="goLocation"
             >
             </map>
         </view>

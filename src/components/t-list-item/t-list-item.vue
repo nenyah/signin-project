@@ -2,7 +2,7 @@
     <view
         class="flex p-20 my-1 text-3xl bg-white box-border justify-between items-center"
         hover-class="bg-gray-100"
-        @click.stop="onClick"
+        @tap.stop="onClick"
     >
         <slot name="header"></slot>
         <view class="flex flex-col flex-1">
@@ -27,7 +27,7 @@ export default class TListItem extends Vue {
     @Prop() private note = ''
     @Prop() private tag = ''
 
-    @Emit('click')
+    @Emit('tap')
     private onClick() {
         return ''
     }

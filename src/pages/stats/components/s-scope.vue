@@ -1,18 +1,18 @@
 <template>
 	<view class="map-bg px-20 h-200 flex flex-col justify-around text-2xl">
 		<view class="flex flex-col h-80 justify-between">
-			<view class="w-300 flex p-20 my-10 bg-white text-gray-500 rounded-2xl items-center justify-around shadow" @click="choosePerson">
+			<view class="w-300 flex p-20 my-10 bg-white text-gray-500 rounded-2xl items-center justify-around shadow" @tap="choosePerson">
 				<view aria-hidden="true" class="fa fa-globe mx-1 flex-shrink"></view>
 				<view class="flex-shrink">范围：{{ userNum > 0 ? userNum + '人' : dept[0].name }}</view>
 				<view class="fa fa-angle-down mx-1 flex-shrink" aria-hidden="true"></view>
 			</view>
-			<view class="w-200 flex p-20 my-10 bg-white text-gray-500 rounded-2xl items-center justify-around shadow" @click="chooseDate">
+			<view class="w-200 flex p-20 my-10 bg-white text-gray-500 rounded-2xl items-center justify-around shadow" @tap="chooseDate">
 				<view class="fa fa-calendar mx-1" aria-hidden="true"></view>
 				<view>{{ today }}</view>
 				<view class="fa fa-angle-down mx-1" aria-hidden="true"></view>
 			</view>
 		</view>
-		<view class="flex justify-end text-blue-500 items-center" @click="goToHistory">
+		<view class="flex justify-end text-blue-500 items-center" @tap="goToHistory">
 			<view class="mr-10">签到历史分布</view>
 			<view class="fa fa-angle-right" aria-hidden="true"></view>
 		</view>

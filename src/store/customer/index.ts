@@ -37,6 +37,7 @@ const init: Module<State, any> = {
             state.isLoadMore = true
             state.more = 'more'
             state.current = 1
+            state.org = new Org()
         },
         SUB_CURRENT(state) {
             state.current -= 1

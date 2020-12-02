@@ -5,9 +5,9 @@
  * @LastEditors: Steven
  * @LastEditTime: 2020-11-23 14:55:17
  */
-import {IDept, IUserDetail} from "./../../common/interface"
-
-export class User implements IUserDetail {
+import {IDept, IUserBrief, IUserDetail} from './../../common/interface'
+type IUser = IUserDetail&IUserBrief
+export class User implements IUser {
     id?: number
     pid?: number
     code?: string
@@ -25,11 +25,23 @@ export class User implements IUserDetail {
     hrId?: number
     createTime?: string
     updateTime?: string
+    dingUserId?: string
+    dingDeptId?: string[]
+    avatar?: string
+    jobNumber?: string
+    userName?: string
+    selectOrg?: boolean
 
-    constructor(user: IUserDetail = {}) {
+    constructor(user: IUser = {}) {
         const {
             id, pid, code, name, dept, post, sex, mobile, email, entryTime,
-            workPlace, remark, delete: isDelete, enable, hrId, createTime, updateTime
+            workPlace, remark, delete: isDelete, enable, hrId, createTime, updateTime,
+            dingUserId,
+            dingDeptId,
+            avatar,
+            jobNumber,
+            userName,
+            selectOrg,
         } = user
         this.id = id
         this.pid = pid
@@ -48,5 +60,11 @@ export class User implements IUserDetail {
         this.hrId = hrId
         this.createTime = createTime
         this.updateTime = updateTime
+        this.dingUserId = dingUserId
+        this.dingDeptId = dingDeptId
+        this.avatar = avatar
+        this.jobNumber = jobNumber
+        this.userName = userName
+        this.selectOrg = selectOrg
     }
 }

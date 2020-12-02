@@ -31,7 +31,7 @@
                             :title="item.name"
                             :note="item.address"
                             :tag="item.orgGroup.name"
-                            @click="goIndex(item.id)"
+                            @tap="goIndex(item.id)"
                         >
                             <template slot="header">
                                 <view
@@ -39,7 +39,7 @@
                                     {{ item.name.substr(0, 3) }}
                                 </view>
                             </template>
-                            <template slot="footer" @click="expand(item.id)">
+                            <template slot="footer" @tap="expand(item.id)">
                                 <view v-if="item.expanded" class="fa fa-chevron-up">
                                 </view>
                                 <view v-else class="fa fa-chevron-down">
@@ -52,7 +52,7 @@
                                 :key="idx"
                                 :title="customer.name"
                                 :note="customer.mobile"
-                                @click="goIndex(item.id)"
+                                @tap="goIndex(item.id)"
                             >
                             </t-list-item>
                         </view>

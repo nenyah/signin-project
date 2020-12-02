@@ -1,5 +1,5 @@
 import {Module} from 'vuex'
-import {IUserDetail} from '@/common/interface'
+import {IUserBrief, IUserDetail} from '@/common/interface'
 import {User} from '@/model/user'
 import api from '@/api'
 import {token} from '@/utils/token'
@@ -10,7 +10,7 @@ const SET_SYNOPSIS = 'SET_SYNOPSIS'
 const SET_LOCATION = 'SET_LOCATION'
 
 interface State {
-    info: IUserDetail
+    info: IUserDetail & IUserBrief
     location: LocationResponse
     ctime: Moment
 }
@@ -26,6 +26,12 @@ export interface LocationResponse {
 }
 
 function welcome(name: string) {
+    if (!name) {
+        return
+    }
+    if (name.length < 1) {
+        return
+    }
     let welcome = ''
     let time = new Date().getHours()
     if (time <= 11) welcome = '上午好'
@@ -81,7 +87,9 @@ const init: Module<State, any> = {
                         token.set(tokenmsg)
                         commit('SET_IS_LOGIN', true, {root: true})
                         commit(SET_SYNOPSIS, user)
-                        welcome(user.userName)
+                        if (user && user.userName) {
+                            welcome(user.userName)
+                        }
                         resolve(res)
                     }
                 })

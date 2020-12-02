@@ -4,7 +4,7 @@
     >
         <view
             class="flex shadow rounded-full w-200 justify-around p-10 m-20 text-gray-700 text-3xl bg-white"
-            @click="pickMonth"
+            @tap="pickMonth"
         >
             <view class="fa fa-calendar mx-10" aria-hidden="true">
             </view>
@@ -34,7 +34,7 @@
                     </view>
                 </view>
             </view>
-            <view class="text-blue-500 self-end" @click="goToHistory">
+            <view class="text-blue-500 self-end" @tap="goToHistory">
                 签到历史分布 >
             </view>
         </view>

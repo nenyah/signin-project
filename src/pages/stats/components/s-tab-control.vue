@@ -4,7 +4,7 @@
             <view
                 class='flex flex-col justify-around items-center mx-20'
                 :class='index === activeTab?"text-blue-500": ""'
-                @click="itemClick(index)"
+                @tap="itemClick(index)"
                 :data-index="index"
                 v-for="(item,index) in tabs"
                 :key="index"

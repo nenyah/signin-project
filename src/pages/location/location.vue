@@ -16,7 +16,7 @@
             <t-list-item
                 v-for="(item,index) in searchItems"
                 :key="index"
-                @click="onItemClick(index)"
+                @tap="onItemClick(index)"
                 :title="item.title"
                 :note="item.address"
                 clickable
@@ -48,7 +48,7 @@
                     <t-list-item
                         v-for="(item,index) in items"
                         :key="index"
-                        @click="onItemClick(index)"
+                        @tap="onItemClick(index)"
                         :title="item.title"
                         :note="item.address"
                         clickable
