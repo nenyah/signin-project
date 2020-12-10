@@ -74,7 +74,7 @@ const init: Module<State, any> = {
                     res = rootState.dept.users as IUserDetail[]
                 }
                 if (res.length < 1) {
-                    console.error('没有用户工号')
+                    console.log('没有用户工号')
                     return
                 }
                 const userIds = res.map(item => item.id) as number[]
