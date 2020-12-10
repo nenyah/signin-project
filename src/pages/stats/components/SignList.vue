@@ -81,7 +81,8 @@ import {Component, Prop, Vue} from 'vue-property-decorator'
 
 @Component
 export default class SignList extends Vue {
-    @Prop()
-    private signRecords!: [] = []
+    get signRecords() {
+        return this.$store.state.signin.signinRecord
+    }
 }
 </script>

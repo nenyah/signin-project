@@ -4,7 +4,7 @@
             v-for="(item,index) in notSignRecords"
             :key="index"
         >
-            <view class="w-100 m-20 flex flex-col items-center">
+            <view class="w-150 m-20 flex flex-col items-center">
                 <view
                     class="w-100 h-100 rounded-full bg-blue-500 text-gray-100 flex justify-center items-center mb-20"
                 >
@@ -28,7 +28,9 @@ import {Component, Prop, Vue} from 'vue-property-decorator'
 
 @Component
 export default class NoSignList extends Vue {
-    @Prop()
-    private notSignRecords!: [] = []
+    get notSignRecords() {
+        console.log('this.$store.state.signin.unSigninRecord', this.$store.state.signin.unSigninRecord)
+        return this.$store.state.signin.unSigninRecord
+    }
 }
 </script>

@@ -6,6 +6,7 @@
   "scripts": {
     "serve": "npm run dev:h5",
     "build": "npm run build:h5",
+    "test:unit": "vue-cli-service test:unit",
     "build:app-plus": "cross-env NODE_ENV=production UNI_PLATFORM=app-plus vue-cli-service uni-build",
     "build:custom": "cross-env NODE_ENV=production uniapp-cli custom",
     "build:h5": "cross-env NODE_ENV=production UNI_PLATFORM=h5 vue-cli-service uni-build",
@@ -83,9 +84,12 @@
     "@dcloudio/vue-cli-plugin-uni-optimize": "2.0.0-29320201014001",
     "@dcloudio/webpack-uni-mp-loader": "2.0.0-29320201014001",
     "@dcloudio/webpack-uni-pages-loader": "2.0.0-29320201014001",
+    "@types/jest": "^24.0.19",
     "@vue/cli-plugin-babel": "4.5.0",
     "@vue/cli-plugin-typescript": "*",
+    "@vue/cli-plugin-unit-jest": "~4.5.0",
     "@vue/cli-service": "4.5.0",
+    "@vue/test-utils": "^1.0.3",
     "babel-plugin-import": "1.11.0",
     "cross-env": "7.0.2",
     "jest": "25.4.0",
@@ -101,6 +105,14 @@
     "Android >= 4",
     "ios >= 8"
   ],
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest",
+      "^.+\\.tsx?$": "ts-jest",
+      "^.+\\.vue": "vue-jest"
+    },
+    "preset": "@vue/cli-plugin-unit-jest/presets/typescript-and-babel"
+  },
   "uni-app": {
     "scripts": {
       "mp-dingtalk": {
@@ -112,13 +124,6 @@
           "MP-DINGTALK": true
         }
       }
-    }
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest",
-      "^.+\\.tsx?$": "ts-jest",
-      "^.+\\.vue": "vue-jest"
     }
   }
 }

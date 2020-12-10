@@ -13,16 +13,6 @@ import NoSignList from './no-sign-list.vue'
 })
 export default class SPersonCards extends Vue {
     @Prop() private activeIndex!: number
-    private $store: any
-
-    get signRecords() {
-        return this.$store.state.signin.signinRecord
-    }
-
-    get notSignRecords() {
-        console.log('this.$store.state.signin.unSigninRecord', this.$store.state.signin.unSigninRecord)
-        return this.$store.state.signin.unSigninRecord
-    }
 }
 </script>
 
