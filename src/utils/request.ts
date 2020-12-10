@@ -55,7 +55,9 @@ const fetch = (params: IParams): Promise<any> => {
                 return config
             })(),
             success(res) {
-                console.log(`成功返回结果：${JSON.stringify(res)}`)
+                if (appConfig.debug) {
+                    console.log(`成功返回结果：${JSON.stringify(res)}`)
+                }
                 if (res.statusCode !== 200) {
                     reject(res.data)
                 }

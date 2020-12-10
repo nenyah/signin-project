@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue} from "vue-property-decorator"
+import {Component, Prop, Vue,Emit} from "vue-property-decorator"
 
 
 @Component
@@ -30,9 +30,10 @@ export default class STabControl extends Vue {
     private item!: []
     @Prop({default: 0})
     private activeTab!: number
-
+    @Emit('onTabClick')
     private itemClick(index: number) {
         console.log("change index:::", index)
+        return index
     }
 };
 </script>

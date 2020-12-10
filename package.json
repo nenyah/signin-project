@@ -56,13 +56,18 @@
     "@dcloudio/uni-quickapp-native": "2.0.0-29320201014001",
     "@dcloudio/uni-quickapp-webview": "2.0.0-29320201014001",
     "@dcloudio/uni-stat": "2.0.0-29320201014001",
+    "@types/lodash": "^4.14.165",
     "@vue/shared": "3.0.0",
+    "@vue/test-utils": "^1.1.1",
     "core-js": "3.6.5",
     "flyio": "0.6.2",
+    "lodash": "^4.17.20",
     "regenerator-runtime": "0.12.1",
     "tailwindcss": "1.9.6",
+    "ts-jest": "^26.4.4",
     "vue": "2.6.11",
     "vue-class-component": "6.3.2",
+    "vue-jest": "^3.0.7",
     "vue-property-decorator": "8.0.0",
     "vuex": "3.2.0"
   },
@@ -97,6 +102,23 @@
     "ios >= 8"
   ],
   "uni-app": {
-    "scripts": {}
+    "scripts": {
+      "mp-dingtalk": {
+        "title": "钉钉小程序",
+        "env": {
+          "UNI_PLATFORM": "mp-alipay"
+        },
+        "define": {
+          "MP-DINGTALK": true
+        }
+      }
+    }
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest",
+      "^.+\\.tsx?$": "ts-jest",
+      "^.+\\.vue": "vue-jest"
+    }
   }
 }

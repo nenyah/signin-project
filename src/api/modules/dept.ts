@@ -5,7 +5,7 @@ interface DeptInfoParams {
     deptIds?: number[]
 }
 export default {
-    deptInfo: (data: DeptInfoParams = {}): Promise<IDeptResponse> => {
+    deptInfo: (data: DeptInfoParams = {}): Promise<IDeptResponse[]> => {
         return request.get('dept', data)
     }
 }

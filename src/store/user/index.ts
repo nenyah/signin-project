@@ -48,7 +48,7 @@ const init: Module<State, any> = {
     state: {
         info: new User(),
         location: {} as LocationResponse,
-        ctime: moment()
+        ctime: moment(),
     },
     mutations: {
         updateCtime(state) {
@@ -59,7 +59,7 @@ const init: Module<State, any> = {
         },
         [SET_LOCATION](state, o) {
             state.location = o
-        }
+        },
     },
     getters: {
         address: (state): string => {

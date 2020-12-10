@@ -24,10 +24,11 @@
     </view>
 </template>
 <script lang="ts">
-export default {
-    name: "nosign-list",
-    props: {
-        notSignRecords: {}
-    }
+import {Component, Prop, Vue} from 'vue-property-decorator'
+
+@Component
+export default class NoSignList extends Vue {
+    @Prop()
+    private notSignRecords!: [] = []
 }
 </script>

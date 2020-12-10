@@ -12,7 +12,6 @@
             <view
                 class="border-2 border-gray-300 border-solid mt-10 mx-auto w-700 rounded bg-white shadow"
                 @tap="goToPorfile"
-                :data-item="item"
             >
                 <view class="border-0 border-b-2 border-gray-300 border-solid flex items-center px-20">
                     <view
@@ -25,7 +24,7 @@
                             {{ item.userName }}
                         </view>
                         <view class="text-2xl text-gray-500">
-                            {{ item.time.substr(0, 5) }} 今日已签到{{ item.quantity }}次
+                            {{ item.time.substr(0, 5) }} 今日已签到{{ item.count }}次
                         </view>
                     </view>
                 </view>
@@ -78,10 +77,11 @@
     </view>
 </template>
 <script lang="ts">
-export default {
-    name: "sign-list",
-    props: {
-        signRecords: {}
-    }
+import {Component, Prop, Vue} from 'vue-property-decorator'
+
+@Component
+export default class SignList extends Vue {
+    @Prop()
+    private signRecords!: [] = []
 }
 </script>

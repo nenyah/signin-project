@@ -1,25 +1,28 @@
 <template>
-    <view v-if="activeIndex==0">
-        <sign-list :sign-records="signRecords"/>
-
-    </view>
-    <view v-else-if="activeIndex===1">
-        <nosign-list :not-sign-records="notSignRecords"/>
-    </view>
+    <sign-list v-if="activeIndex===0" :sign-records="signRecords"/>
+    <no-sign-list v-else-if="activeIndex===1" :not-sign-records="notSignRecords"/>
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue} from "vue-property-decorator"
-import {IUserSignVO} from "@/common/interface"
-import SignList from "@/pages/stats/components/SignList.vue"
-import NosignList from "@/pages/stats/components/NosignList.vue"
+import {Component, Prop, Vue} from 'vue-property-decorator'
+import SignList from '@/pages/stats/components/SignList.vue'
+import NoSignList from './no-sign-list.vue'
+
 @Component({
-    components: {NosignList, SignList}
+    components: {NoSignList, SignList}
 })
 export default class SPersonCards extends Vue {
-    @Prop() private signRecords!: IUserSignVO[]
     @Prop() private activeIndex!: number
-    @Prop() private notSignRecords!: []
+    private $store: any
+
+    get signRecords() {
+        return this.$store.state.signin.signinRecord
+    }
+
+    get notSignRecords() {
+        console.log('this.$store.state.signin.unSigninRecord', this.$store.state.signin.unSigninRecord)
+        return this.$store.state.signin.unSigninRecord
+    }
 }
 </script>
 

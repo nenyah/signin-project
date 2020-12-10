@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import user from './user'
 import customer from './customer'
 import signin from './signin'
+import dept from './dept'
 
 
 Vue.use(Vuex)
@@ -13,6 +14,7 @@ const store = new Vuex.Store({
         user,
         customer,
         signin,
+        dept,
     },
     state: {
         isLogin: false
