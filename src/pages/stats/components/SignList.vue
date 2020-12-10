@@ -11,7 +11,7 @@
         >
             <view
                 class="border-2 border-gray-300 border-solid mt-10 mx-auto w-700 rounded bg-white shadow"
-                @tap="goToPorfile"
+                @tap="goToPorfile(item.id)"
             >
                 <view class="border-0 border-b-2 border-gray-300 border-solid flex items-center px-20">
                     <view
@@ -77,12 +77,17 @@
     </view>
 </template>
 <script lang="ts">
-import {Component, Prop, Vue} from 'vue-property-decorator'
+import {Component, Vue} from 'vue-property-decorator'
 
 @Component
 export default class SignList extends Vue {
     get signRecords() {
         return this.$store.state.signin.signinRecord
+    }
+
+    private goToPorfile(id: number) {
+        console.log('goToPorfile:::', id)
+        uni.navigateTo({url: `/pages/profile/profile?id=${id}`})
     }
 }
 </script>
