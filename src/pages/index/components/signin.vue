@@ -48,7 +48,6 @@ export default class Signin extends Vue {
     }
 
     get customer() {
-        console.log('this.$store.state.customer.org', this.$store.state.customer.org)
         return this.$store.state.customer.org
     }
 
@@ -58,7 +57,6 @@ export default class Signin extends Vue {
 
     get checkTimes() {
         const signinRecordToday = this.$store.state.signin.signinRecordToday
-        console.log('checkTimes:::', signinRecordToday)
         return signinRecordToday.userSignCount || 0
     }
 

@@ -162,20 +162,10 @@ export default class Submit extends Vue {
             return
         }
         this.picUrls.push(res.filePaths[0])
-        console.log('useCamera:::', res)
     }
 
-    private handleTextAreaInput(e: any) {
-        console.log('handleTextArea:::', e.detail.value)
-
-    }
-
-    private handComfirm() {
-        console.log('handComfirm:::')
-    }
 
     private async formSubmit(e: any) {
-        console.log('formSubmit:::', e.detail.value)
         if (this.disabled) {
             return
         }
@@ -194,7 +184,6 @@ export default class Submit extends Vue {
             ...e.detail.value,
             timeStamp: ctime,
         }
-        console.log('signRecord:::', signRecord)
         // 上传图片
         const upload = this.picUrls.map((img) => {
             return api.signin.uploadImg(img,
@@ -206,10 +195,8 @@ export default class Submit extends Vue {
             // 上传图片
             const imgRes = await Promise.all(upload)
             signRecord.imageUrlList = imgRes
-            console.log('图片上传结果', imgRes)
             // 上传签到信息
             const upRes = await api.signin.addSignRecord(signRecord)
-            console.log('签到信息上传结果', upRes)
 
             // 成功动画
             this.sucessAnimation()
@@ -219,6 +206,8 @@ export default class Submit extends Vue {
                 // 上传成功后重置客户信息
                 this.$store.commit('customer/init')
                 this.$store.commit('user/updateCtime')
+                // 重新更新当天签到记录
+                this.$store.dispatch('signin/getSigninRecordToday')
                 // 解锁
                 this.disabled = false
                 // 返回首页
@@ -231,12 +220,10 @@ export default class Submit extends Vue {
     }
 
     private removePic(index: number) {
-        console.log('removePic:::', index)
         this.picUrls.splice(index, 1)
     }
 
     private async previewPic(index: number) {
-        console.log('previewPic:::', index)
         const img = this.picUrls[index]
         const [err, res]: any = await uni.previewImage({
             urls: [img],
@@ -254,8 +241,6 @@ export default class Submit extends Vue {
             duration: 1000,
             timingFunction: 'ease-in-out',
         })
-
-
         this.animation.translate(-750, -15).rotate(-45).step()
         this.isShow = true
         this.animationData = this.animation.export()
