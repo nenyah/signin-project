@@ -18,7 +18,10 @@
             <view class="flex items-center ">
                 <view
                     class="w-140 h-140 rounded-full m-10 bg-blue-500 text-gray-100 font-black text-4xl flex justify-center items-center">
-                    {{ userInfo.username.length > 2 ? userInfo.username.substr(0, 2) : userInfo.username }}
+                    {{
+                        userInfo.username.length > 2 ? userInfo.username.substr(0, 2)
+                                                     : userInfo.username
+                    }}
                 </view>
                 <view>
                     <view class="text-5xl font-bold">
@@ -26,7 +29,7 @@
                     </view>
                     <view class="my-10">
                         本月签到
-                        <text class="text-blue-500">{{ items[0].userSignCount }}</text>
+                        <text class="text-blue-500">{{ userSignCount }}</text>
                         次
                     </view>
                     <view class="text-gray-500 text-2xl">
@@ -41,15 +44,46 @@
     </view>
 </template>
 <script lang="ts">
-export default {
-    name: "ProfileScope",
-    data() {
-        return {
-            month: new Date().toLocaleDateString(),
-            userInfo: {username: "张三"},
-            items: [{userSignCount: 10}],
-            company: "华东宁波医药有限公司"
-        }
+import {Component, Vue} from 'vue-property-decorator'
+
+@Component
+export default class ProfileScope extends Vue {
+    private company = '华东宁波医药有限公司'
+
+    get userInfo() {
+        return {username: this.$store.state.signin.userName}
+    }
+
+    get userSignCount() {
+        console.log('signinRecordMonth:::', this.$store.state.signin.signinRecordMonth)
+        const recordMonth = this.$store.state.signin.signinRecordMonth
+        return recordMonth.length > 0 ? recordMonth[0].userSignCount : 0
+
+    }
+
+    get month() {
+        return this['$store'].state.signin.selectedMonth
+    }
+
+    private pickMonth() {
+        //#ifdef MP-ALIPAY
+        my.datePicker({
+            format: 'yyyy-MM',
+            currentDate: this.month,
+            success: (res) => {
+                console.log('选择日期:::', res)
+                // 1. 更新日期
+                this['$store'].commit('signin/updateMonth', res.date)
+                // 2. 调用获取签到信息
+                this['$store'].dispatch('signin/getSigninRecordMonth')
+            },
+        })
+        // #endif
+    }
+
+    private goToHistory() {
+        console.log('goToHistory')
+        uni.navigateTo({url: `/pages/history/history`})
     }
 }
 </script>

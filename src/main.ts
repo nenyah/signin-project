@@ -9,7 +9,7 @@ import store from '@/store'
 // })
 
 // Vue.prototype.$request = request
-// Vue.prototype.$store = store
+Vue.prototype.$store = store
 Vue.config.productionTip = false
 
 new App({store,}).$mount()

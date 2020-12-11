@@ -11,7 +11,7 @@
         >
             <view
                 class="border-2 border-gray-300 border-solid mt-10 mx-auto w-700 rounded bg-white shadow"
-                @tap="goToPorfile(item.id)"
+                @tap="goToPorfile(item)"
             >
                 <view class="border-0 border-b-2 border-gray-300 border-solid flex items-center px-20">
                     <view
@@ -85,9 +85,15 @@ export default class SignList extends Vue {
         return this.$store.state.signin.signinRecord
     }
 
-    private goToPorfile(id: number) {
-        console.log('goToPorfile:::', id)
-        uni.navigateTo({url: `/pages/profile/profile?id=${id}`})
+    private goToPorfile(item: any) {
+        console.log('goToPorfile:::', item)
+        // 1. 改变userId
+        this.$store.commit('signin/changeUserIds', [item.userId])
+        this.$store.commit('signin/SET_USERNAME', item.userName)
+        // 2. 获取用户当月签到记录
+        this.$store.dispatch('signin/getSigninRecordMonth')
+        //2. 跳转页面
+        uni.navigateTo({url: `/pages/profile/profile?userId=${item.userId}&name=${item.userName}`})
     }
 }
 </script>

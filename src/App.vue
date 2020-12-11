@@ -37,7 +37,6 @@ export default Vue.extend({
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
     line-clamp: 2;
     -webkit-box-orient: vertical;
 }
@@ -47,9 +46,8 @@ page {
 }
 
 .map-bg {
-    background: url('/static/images/map_bg.png');
     background-size: 100%;
-    background-repeat: no-repeat;
+    background: url('/static/images/map_bg.png') no-repeat;
 }
 
 .bg-theme-blue {

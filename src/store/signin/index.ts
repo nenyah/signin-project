@@ -7,10 +7,14 @@ import {differenceBy} from 'lodash'
 interface State {
     signinRecordToday: ISignHistory[]
     signinRecord: ISignHistory[]
+    signinRecordMonth: ISignHistory[]
     unSigninRecord: string[]
     tabs: number[]
     selectedUsers: string[]
     selectedDate: string
+    selectedMonth: string
+    userIds: number[]
+    userName: string
 }
 
 
@@ -19,10 +23,14 @@ const init: Module<State, any> = {
     state: {
         signinRecordToday: [],
         signinRecord: [],
+        signinRecordMonth: [],
         unSigninRecord: [],
         tabs: [],
         selectedUsers: [],
         selectedDate: moment().format('YYYY-MM-DD'),
+        selectedMonth: moment().format('YYYY-MM'),
+        userIds: [],
+        userName: '',
     },
     mutations: {
         SET_SIGNINRECORDTODAY(state, o) {
@@ -37,6 +45,14 @@ const init: Module<State, any> = {
             console.log('SET_UNSIGNINRECORD:::', o)
             state.unSigninRecord = o
         },
+        SET_SIGNINRECORDMONTH(state, o) {
+            console.log('SET_SIGNINRECORDMONTH:::', o)
+            state.signinRecordMonth = o
+        },
+        SET_USERNAME(state, o) {
+            console.log('SET_USERNAME', o)
+            state.userName = o
+        },
         changeTabs(state, o) {
             console.log('changeTabs:::', o)
             state.tabs = o
@@ -49,7 +65,14 @@ const init: Module<State, any> = {
             console.log('updateDate:::', o)
             state.selectedDate = o
         },
-
+        updateMonth(state, o) {
+            console.log('updateMonth:::', o)
+            state.selectedMonth = o
+        },
+        changeUserIds(state, o) {
+            console.log('changeUserIds:::', o)
+            state.userIds = o
+        },
     },
     getters: {},
     actions: {
@@ -64,7 +87,7 @@ const init: Module<State, any> = {
             }
         },
         async getSigninRecord({state, commit, rootState}) {
-            const {selectedUsers, selectedDate} = state
+            const {selectedUsers, selectedDate, userIds} = state
             console.log('调用getSigninRecord:::', selectedUsers, selectedDate)
             try {
                 let res
@@ -72,6 +95,7 @@ const init: Module<State, any> = {
                     res = await api.user.infoByCode({userJobNumbers: selectedUsers})
                 } else {
                     res = rootState.dept.users as IUserDetail[]
+
                 }
                 if (res.length < 1) {
                     console.log('没有用户工号')
@@ -106,7 +130,27 @@ const init: Module<State, any> = {
             } catch (e) {
                 console.error('获取签到信息出错', e)
             }
+        },
+        async getSigninRecordMonth({state, commit, rootState}) {
+            const {selectedMonth, userIds} = state
+            console.log('selectedMonth', selectedMonth, 'userIds', userIds)
+            const firstDate = moment(selectedMonth, 'YYYY-MM').startOf('month').format('YYYY-MM-DD')
+            const lastDate = moment(selectedMonth, 'YYYY-MM').endOf('month').format('YYYY-MM-DD')
+            try {
+                const signRecord = await api.signin.getSignRecord({
+                    userIds,
+                    startDate: firstDate,
+                    endDate: lastDate
+                })
+                console.log('选定用户签到信息:::', signRecord)
+                const signinRecord = signRecord.data.length > 0 ? signRecord.data : []
+                console.log('signinRecord:::', signinRecord)
+                commit('SET_SIGNINRECORDMONTH', signinRecord)
+            } catch (e) {
+                console.error('获取签到信息出错', e)
+            }
         }
-    }
+    },
+
 }
 export default init

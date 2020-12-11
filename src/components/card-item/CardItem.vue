@@ -2,6 +2,7 @@
     <view class="my-20">
         <view class="text-2xl my-20"
               :class="primary?`text-blue-500`:`text-gray-500`"
+              v-if="value.length>0 || picList.length>0"
         >{{ title }}
         </view>
         <view class="text-2xl"
@@ -16,7 +17,7 @@
     </view>
 </template>
 <script lang="ts">
-import {Component, Prop, Vue} from "vue-property-decorator"
+import {Component, Prop, Vue} from 'vue-property-decorator'
 
 @Component
 export default class CardItem extends Vue {

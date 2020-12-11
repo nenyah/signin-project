@@ -14,10 +14,9 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue} from "vue-property-decorator"
-import ProfileScope from "./components/ProfileScope.vue"
-import ProfileList from "@/components/profile-list/ProfileList.vue"
-import {ISignHistory} from "@/common/interface"
+import {Component, Vue} from 'vue-property-decorator'
+import ProfileScope from './components/ProfileScope.vue'
+import ProfileList from '@/components/profile-list/ProfileList.vue'
 
 @Component({
     components: {
@@ -26,57 +25,18 @@ import {ISignHistory} from "@/common/interface"
     },
 })
 export default class Profile extends Vue {
-    private items: ISignHistory[] = [{
-        jobNumber: "PO0123",
-        userName: "张三",
-        userSignCount: 10,
-        userSignVOList: [
-            {
-                count: 0,
-                org: {
-                    id: 0,
-                    name: "浙江省宁波市北仑区第一骨科医院"
-                },
-                id: "1",
-                userId: 1234,
-                jobNumber: "PO0123",
-                userName: "张三",
-                date: "2020-11-15",
-                time: "13：50",
-                place: "宁波第一医院地址",
-                detailPlace: "宁波第一医院详细地址",
-                imgUrlList: [
-                    "https://tp.huadongbio.com:9000/weixinapp-vote/product.png",
-                    "https://tp.huadongbio.com:9000/weixinapp-vote/face.png"
-                ],
-                remark: "备注",
-                longitude: "120.12703000",
-                latitude: "30.27392300"
-            },
-            {
-                count: 0,
-                org: {
-                    id: 0,
-                    name: "浙江省宁波市北仑区第二骨科医院"
-                },
-                id: "1",
-                userId: 1234,
-                jobNumber: "PO0123",
-                userName: "张三",
-                date: "2020-11-15",
-                time: "13：50",
-                place: "宁波第一医院地址",
-                detailPlace: "宁波第一医院详细地址",
-                imgUrlList: [
-                    "https://tp.huadongbio.com:9000/weixinapp-vote/product.png",
-                    "https://tp.huadongbio.com:9000/weixinapp-vote/face.png"
-                ],
-                remark: "备注",
-                longitude: "120.12703000",
-                latitude: "30.27392300"
-            }
-        ]
-    }]
+    private userInfo!: any
+
+    onLoad(query) {
+        const {name, userId} = query
+        this.userInfo = {username: name}
+        console.log('profile page:::', query)
+    }
+
+    get items() {
+        console.log('this.$store.state.signin.signinRecordMonth:::', this.$store.state.signin.signinRecordMonth)
+        return this.$store.state.signin.signinRecordMonth
+    }
 };
 </script>
 
