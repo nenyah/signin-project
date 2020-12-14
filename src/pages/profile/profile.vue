@@ -3,9 +3,8 @@
     <ProfileScope />
     <view class="bg-white">
       <ProfileList
-        :items="items"
         :user-sign-v-o-list="items[0].userSignVOList"
-        v-if="items.length > 0"
+        v-if="items[0].userSignVOList.length > 0"
       />
       <image
         v-else

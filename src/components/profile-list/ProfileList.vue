@@ -1,7 +1,7 @@
 <template>
   <view>
     <view
-      v-for="item in items"
+      v-for="item in userSignVOList"
       :key="item.id"
       class="w-full bg-color-white py-20 flex flex-col items-center"
     >
@@ -37,7 +37,6 @@ import { IUserSignVO } from "@/common/interface"
 export default class ProfileList extends Vue {
   @Prop({ default: () => {} }) private userSignVOList!: IUserSignVO[]
   @Prop({ type: Boolean, default: true }) private Clickable!: boolean
-  private items = this.userSignVOList
 
   private handleItemClick(id: number) {
     if (!this.Clickable) {
