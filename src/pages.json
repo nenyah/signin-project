@@ -40,7 +40,8 @@
     {
       "path": "pages/submit/submit",
       "style": {
-        "navigationBarTitleText": "签到"
+        "navigationBarTitleText": "签到",
+        "backgroundColor": "#f0eff5"
       }
     },
     {

@@ -1,7 +1,7 @@
 <template>
   <view class="border-0 border-b-2 border-gray-300 border-solid py-20 map-bg">
     <view
-      class="flex shadow rounded-full w-200 justify-around p-10 m-20 text-gray-700 text-3xl bg-white"
+      class="flex shadow rounded-full w-200 justify-around items-center p-10 m-20 text-gray-700 text-3xl bg-white"
       @tap="pickMonth"
     >
       <view class="fa fa-calendar mx-10" aria-hidden="true"> </view>
