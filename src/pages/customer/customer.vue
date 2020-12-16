@@ -101,32 +101,34 @@ export default class Customer extends Vue {
   onLoad() {
     this.$store.dispatch("customer/getCustomer")
   }
-
+  onUnload() {
+    this.$store.commit("customer/SET_ORGNAME", "")
+  }
   private goIndex(id: number) {
-    console.log("goIndex:::", id)
     const item = this.items.find((item: IOrg) => {
       return item.id === id
     })
     this.$store.commit("customer/SET_ORG", item)
+    this.$store.commit("customer/SET_ORGNAME", "")
     uni.navigateBack({})
   }
 
   private expand(id: number) {
-    console.log("expand:::")
     this.$store.commit("customer/CHANGE_EXPANDED", id)
   }
 
   private upper() {}
 
   private lower() {
-    console.log("lower:::")
     this.$store.dispatch("customer/getCustomer")
   }
 
   private scroll() {}
 
   private search(val: any) {
-    console.log("search", val)
+    this.$store.commit("customer/SET_ORGNAME", val.value)
+    this.$store.commit("customer/init")
+    this.$store.dispatch("customer/getCustomer")
   }
 
   private change() {}
