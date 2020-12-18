@@ -86,6 +86,7 @@ import uniListItem from "@/components/uni-list-item/uni-list-item.vue"
 import uniSearchBar from "@/components/uni-search-bar/uni-search-bar.vue"
 import TListItem from "@/components/t-list-item/t-list-item.vue"
 import amap from "@/libs/amap-dd"
+import api from "@/api"
 
 interface Item {
   title: string
@@ -131,16 +132,23 @@ export default class Location extends Vue {
 
   async onLoad() {
     const { longitude, latitude } = this.location
-    const { pois } = await amap.getAround({ longitude, latitude })
-    console.log("poi:::", pois)
-    this.items = pois.map((el, index) => ({
-      title: el.name,
-      address: `${el.pname}${el.cityname}${el.address}`,
-      selected: index === 0,
-      longitude: Number.parseFloat(el.location.split(",")[0]),
-      latitude: Number.parseFloat(el.location.split(",")[1]),
-      province: el.pname,
-    }))
+    try {
+      const { value } = await api.setting.webSetting({
+        name: "limitRange",
+      })
+      const radius = Number.parseInt(value)
+      const { pois } = await amap.getAround({ longitude, latitude, radius })
+      this.items = pois.map((el, index) => ({
+        title: el.name,
+        address: `${el.pname}${el.cityname}${el.address}`,
+        selected: index === 0,
+        longitude: Number.parseFloat(el.location.split(",")[0]),
+        latitude: Number.parseFloat(el.location.split(",")[1]),
+        province: el.pname,
+      }))
+    } catch (error) {
+      console.log("获取数据错误", error)
+    }
   }
 
   get covers() {
