@@ -48,6 +48,7 @@
         :show-location="hasLocation"
         :controls="controls"
         :markers="covers"
+        :show-compass="false"
         style="width:100%;height:300px;"
       ></map>
 
