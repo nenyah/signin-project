@@ -160,7 +160,15 @@ export default class Submit extends Vue {
       uni.showToast({ title: "拍照错误" })
       return
     }
-    this.picUrls.push(res.filePaths[0])
+    // #ifdef MP-ALIPAY
+    dd.compressImage({
+      filePaths: res.tempFilePaths,
+      compressLevel: 1,
+      success: (res) => {
+        this.picUrls.push(res.apFilePaths[0])
+      },
+    })
+    // #endif
   }
 
   private async formSubmit(e: any) {
@@ -241,6 +249,13 @@ export default class Submit extends Vue {
       .step()
     this.isShow = true
     this.animationData = this.animation.export()
+  }
+
+  private async imgSize(file: string) {
+    const res = await uni.getImageInfo({
+      src: file,
+    })
+    console.log("res:::", res)
   }
 }
 </script>
