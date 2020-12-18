@@ -936,7 +936,7 @@ src
 
 ##### 框架引入
 
-1. 将本小程序框架（[源码](https://github.com/nenyah/checkin-mini-program)）克隆至本地，并安装依赖。
+1. 将本小程序框架（[源码](https://github.com/nenyah/signin-project)）克隆至本地，并安装依赖。
 
 ```sh
 git clone https://github.com/nenyah/signin-project.git
