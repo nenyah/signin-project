@@ -4,13 +4,15 @@
       class="text-2xl my-20"
       :class="primary ? `text-blue-500` : `text-gray-500`"
       v-if="value.length > 0 || picList.length > 0"
-      >{{ title }}
+    >
+      {{ title }}
     </view>
     <view
       class="text-2xl"
       :class="primary ? `text-blue-500 font-bold` : `text-gray-900`"
       v-if="value.length > 0"
-      >{{ value }}
+    >
+      {{ value }}
     </view>
     <view class="flex" v-if="picList.length > 0">
       <image
@@ -34,6 +36,8 @@ export default class CardItem extends Vue {
   @Prop() private picList!: Array<string>
   @Prop({ default: false }) private primary!: boolean
   private previewImg(pic: string) {
+    console.log("previewImg:::", pic)
+
     uni.previewImage({
       urls: [pic],
     })

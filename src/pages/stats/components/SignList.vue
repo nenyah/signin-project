@@ -45,12 +45,11 @@
           <view v-if="item.imgUrlList.length > 0" class="my-20">
             <view class="font-bold">签到图片</view>
             <view class="flex my-10">
-              <view v-for="(pic, index) in item.imgUrlList" :key="index">
+              <view v-for="(pic, idx) in item.imgUrlList" :key="idx">
                 <image
                   :src="pic"
                   mode="aspectFill"
                   class="w-100 h-100 mx-10"
-                  :data-src="pic"
                   @tap.stop="previewImg(pic)"
                 />
               </view>
@@ -65,6 +64,9 @@
         </view>
       </view>
     </view>
+    <uni-popup ref="popup">
+      <image :src="img" mode="widthFix"></image>
+    </uni-popup>
   </scroll-view>
   <view v-else>
     <image
@@ -76,14 +78,18 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator"
-
-@Component
+import UniPopup from "@/components/uni-popup/uni-popup.vue"
+@Component({
+  components: {
+    UniPopup,
+  },
+})
 export default class SignList extends Vue {
   [x: string]: any
+  private img = ""
   get signRecords() {
     return this.$store.state.signin.signinRecord
   }
-
   private goToPorfile(item: any) {
     // 1. 改变userId
     this.$store.commit("signin/changeUserIds", [item.userId])
@@ -97,9 +103,8 @@ export default class SignList extends Vue {
   }
   private lower() {}
   private previewImg(pic: string) {
-    uni.previewImage({
-      urls: [pic],
-    })
+    this.$refs.popup.open()
+    this.img = pic
   }
 }
 </script>
