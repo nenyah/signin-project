@@ -1,6 +1,6 @@
 <template>
   <view>
-    <view class="flex">
+    <view class="flex items-center">
       <uni-search-bar
         @confirm="search"
         @input="input"
@@ -115,7 +115,7 @@ export default class Location extends Vue {
   private items: Item[] = []
   private scrollTop = 0
   private old = { scrollTop: 0 }
-  private searchItems = []
+  private searchItems: Item[] = []
   $store: any
   private controls = [
     {

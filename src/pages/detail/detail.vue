@@ -18,6 +18,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator"
 import ProfileList from "@/components/profile-list/ProfileList.vue"
+import { IUserSignVO } from "@/common/interface"
 interface queryParam {
   id?: string
   page: string
@@ -46,8 +47,8 @@ export default class Detail extends Vue {
       return [todayRecord]
     } else {
       const monthRecord = this.$store.state.signin.signinRecordMonth[0].userSignVOList.filter(
-        (item) => {
-          return item.id == this.id
+        (item: IUserSignVO) => {
+          return Number.parseInt(item.id) === this.id
         }
       )
       return monthRecord
