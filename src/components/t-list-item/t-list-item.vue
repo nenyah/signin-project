@@ -29,9 +29,9 @@ import { Component, Emit, Prop, Vue } from "vue-property-decorator"
 
 @Component({})
 export default class TListItem extends Vue {
-  @Prop() private title = ""
-  @Prop() private note = ""
-  @Prop() private tag = ""
+  @Prop({ type: String, default: "" }) private title!: string
+  @Prop({ type: String, default: "" }) private note!: string
+  @Prop({ type: String, default: "" }) private tag!: string
 
   @Emit("tap")
   private onClick() {
