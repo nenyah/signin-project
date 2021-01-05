@@ -62,19 +62,20 @@
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator'
+import {IUserSignVO} from '../../common/interface'
 
 @Component({})
 export default class History extends Vue {
     private history = true
     private pageProfile = false
-    private $store: any
+    $store: any
 
     get items() {
         return this.$store.state.signin.signinRecord
     }
 
     get midLocation() {
-        const locations = this.items.map(item => {
+        const locations = this.items.map((item: IUserSignVO) => {
             return [item.latitude, item.longitude]
         })
         const num = locations.length
