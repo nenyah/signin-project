@@ -8,10 +8,10 @@
         <view
           class="w-100 h-100 rounded-full bg-blue-500 text-gray-100 flex justify-center items-center mb-20"
         >
-          {{ item.name.length > 2 ? item.name.slice(-2) : item.name }}
+          {{ item.length > 2 ? item.slice(-2) : item }}
         </view>
 
-        <text>{{ item.name }}</text>
+        <text>{{ item }}</text>
       </view>
     </view>
   </view>

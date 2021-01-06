@@ -46,7 +46,7 @@ export default class Detail extends Vue {
         .userSignVOList[this.id]
       return [todayRecord]
     } else {
-      const monthRecord = this.$store.state.signin.signinRecordMonth[0].userSignVOList.filter(
+      const monthRecord = this.$store.state.signin.signinRecordMonth.userSignVOList.filter(
         (item: IUserSignVO) => {
           return Number.parseInt(item.id) === this.id
         }

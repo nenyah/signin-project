@@ -78,7 +78,7 @@ const init: Module<State, any> = {
         async getSigninRecordToday({state, commit}) {
             try {
                 const res = await api.signin.getSignRecord()
-                const signinRecord = res.data.length > 0 ? res.data[0] : []
+                const signinRecord = res.userSignVOList.length > 0 ? res : []
                 commit('SET_SIGNINRECORDTODAY', signinRecord)
             } catch (e) {
                 console.log('获取当天签到记录失败', e)
@@ -99,18 +99,18 @@ const init: Module<State, any> = {
                 }
                 const userIds = res.map((item) => item.id) as number[]
 
-                const signRecord = await api.signin.getSignRecord({
+                const signRecord = await api.signin.getSignRecordMulti({
                     userIds,
                     startDate: selectedDate,
                     endDate: selectedDate,
                 })
-
-                const signNum = signRecord.data.length > 0 ? signRecord.data.length : 0
-                const unSignNum = userIds.length - signNum
+                console.log('vuex signRecord:::', signRecord)
+                const signNum = signRecord.signCount || 0
+                const unSignNum = signRecord.notSignUsers.length || 0
                 commit('changeTabs', [signNum, unSignNum])
                 const signinRecord =
-                    signRecord.data.length > 0
-                    ? signRecord.data.map((item) => {
+                    signRecord.signData.length > 0
+                    ? signRecord.signData.map((item) => {
                         if (item.userSignVOList.length > 0) {
                             item.userSignVOList[0].count = item.userSignCount
                             return item.userSignVOList[0]
@@ -118,14 +118,7 @@ const init: Module<State, any> = {
                         return []
                     })
                     : []
-                const unSigned = differenceBy(
-                    res.map((item) => {
-                        item.userId = item.id
-                        return item
-                    }),
-                    signinRecord,
-                    'userId'
-                )
+                const unSigned = signRecord.notSignUsers
                 commit('SET_SIGNINRECORD', signinRecord)
                 commit('SET_UNSIGNINRECORD', unSigned)
             } catch (e) {
@@ -147,7 +140,7 @@ const init: Module<State, any> = {
                     startDate: firstDate,
                     endDate: lastDate,
                 })
-                const signinRecord = signRecord.data.length > 0 ? signRecord.data : []
+                const signinRecord = signRecord.userSignVOList.length > 0 ? signRecord: []
                 console.log('signinRecord:::', signinRecord)
                 commit('SET_SIGNINRECORDMONTH', signinRecord)
             } catch (e) {

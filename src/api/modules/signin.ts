@@ -6,7 +6,7 @@
  * @LastEditTime: 2020-11-05 16:11:17
  */
 import request from "@/utils/request"
-import { IOrgVO, ISignHistoryResponse } from "@/common/interface"
+import {IOrgVO, ISignHistory, ISignHistoryResponse} from '@/common/interface'
 
 interface SignRecordParams {
   current?: number
@@ -30,8 +30,13 @@ export interface SignRecordData {
 export default {
   getSignRecord: (
     data: SignRecordParams = {}
-  ): Promise<ISignHistoryResponse> => {
+  ): Promise<ISignHistory> => {
     return request.get("ding/sign", data)
+  },
+  getSignRecordMulti: (
+      data: SignRecordParams = {}
+  ): Promise<ISignHistoryResponse> => {
+    return request.get("ding/sign/multi", data)
   },
   addSignRecord: (data: SignRecordData): Promise<any> => {
     return request.post("ding/sign", data)
