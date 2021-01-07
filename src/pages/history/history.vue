@@ -76,7 +76,7 @@ export default class History extends Vue {
 
     get midLocation() {
         const locations = this.items.map((item: IUserSignVO) => {
-            return [item.latitude, item.longitude]
+            return [Number.parseFloat(item.latitude), Number.parseFloat(item.longitude)]
         })
         const num = locations.length
         let latitude = 0, longitude = 0
@@ -86,6 +86,7 @@ export default class History extends Vue {
             latitude += lat
             longitude += lon
         }
+        console.log('midLocation:::', locations, num, latitude, longitude)
         latitude /= num
         longitude /= num
         return {latitude, longitude}
