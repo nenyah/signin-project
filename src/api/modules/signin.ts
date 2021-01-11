@@ -29,17 +29,17 @@ export interface SignRecordData {
 
 export default {
   getSignRecord: (
-    data: SignRecordParams = {}
+    data?: SignRecordParams
   ): Promise<ISignHistory> => {
     return request.get("ding/sign", data)
   },
   getSignRecordMulti: (
-      data: SignRecordParams = {}
+      data?: SignRecordParams
   ): Promise<ISignHistoryResponse> => {
     return request.get("ding/sign/multi", data)
   },
   addSignRecord: (data: SignRecordData): Promise<any> => {
-    return request.post("ding/sign", data)
+    return request.post("ding/sign", JSON.stringify(data))
   },
   uploadImg: (filePath: string, formData: {}): Promise<string> => {
     return request.upload("ding/sign/uploadImg", filePath, formData)

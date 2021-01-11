@@ -196,7 +196,6 @@ export default class Submit extends Vue {
             ...e.detail.value,
             timeStamp: ctime,
         }
-
         // 上传图片
         const upload = this.picUrls.map((img) => {
             return api.signin.uploadImg(img, {
@@ -208,24 +207,30 @@ export default class Submit extends Vue {
             const imgRes = await Promise.all(upload)
             signRecord.imageUrlList = imgRes
             // 上传签到信息
-            const upRes = await api.signin.addSignRecord(signRecord)
-
-            // 成功动画
-            this.sucessAnimation()
-
-            setTimeout(() => {
+            api.signin.addSignRecord(signRecord).then(res => {
+                console.log('上传成功:::', res)
+                // 成功动画
+                this.sucessAnimation()
                 // 上传成功后重置客户信息
                 this.$store.commit('customer/init')
                 this.$store.commit('user/updateCtime')
-                // 重新更新当天签到记录
-                this.$store.dispatch('signin/getSigninRecordToday')
                 // 解锁
                 this.disabled = false
-                // 返回首页
-                uni.redirectTo({url: `/pages/detail/detail?page=submit`})
-            }, 1000)
+                // 重新更新当天签到记录
+                this.$store.dispatch('signin/getSigninRecordToday').then(res => {
+                    // 返回明细页
+                    uni.redirectTo({url: `/pages/detail/detail?page=submit`})
+                })
+            }).catch(err => {
+                console.log('上传失败:::', err)
+                // 解锁
+                this.disabled = false
+            })
+
         } catch (e) {
             console.log('数据上传错误:::', e)
+            // 解锁
+            this.disabled = false
         }
     }
 
