@@ -151,30 +151,32 @@ export default class Submit extends Vue {
         return this.$store.state.customer.org
     }
 
-    private async useCamera() {
-        const [err, res]: any = await uni.chooseImage({
+    private useCamera() {
+        uni.chooseImage({
             count: 1, //默认9
             sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
             sourceType: ['camera'], //从相册选择
-        })
-        console.log('useCamera:::', err, res)
-        if (err) {
-            uni.showToast({title: err.errMsg})
-            return
-        }
-        if (res.filePaths.length === 0) {
-            uni.showToast({title: '拍照错误'})
-            return
-        }
-        // #ifdef MP-ALIPAY
-        dd.compressImage({
-            filePaths: res.tempFilePaths,
-            compressLevel: 1,
-            success: (res: { apFilePaths: any[] }) => {
-                this.picUrls.push(res.apFilePaths[0])
+            success: (result) => {
+                if (result.filePaths.length === 0) {
+                    uni.showToast({title: '拍照错误'})
+                    return
+                }
+                // #ifdef MP-ALIPAY
+                dd.compressImage({
+                    filePaths: result.tempFilePaths,
+                    compressLevel: 1,
+                    success: (res: { apFilePaths: any[] }) => {
+                        this.picUrls.push(res.apFilePaths[0])
+                    },
+                })
+                // #endif
             },
+            fail: (err) => {
+                uni.showToast({title: JSON.stringify(err)})
+            }
+        }).catch(err => {
+            console.log(err)
         })
-        // #endif
     }
 
     private async formSubmit(e: any) {
@@ -207,31 +209,25 @@ export default class Submit extends Vue {
             const imgRes = await Promise.all(upload)
             signRecord.imageUrlList = imgRes
             // 上传签到信息
-            api.signin.addSignRecord(signRecord).then(res => {
-                console.log('上传成功:::', res)
-                // 成功动画
-                this.sucessAnimation()
-                // 上传成功后重置客户信息
-                this.$store.commit('customer/init')
-                this.$store.commit('user/updateCtime')
-                // 解锁
-                this.disabled = false
-                // 重新更新当天签到记录
-                this.$store.dispatch('signin/getSigninRecordToday').then(res => {
-                    // 返回明细页
-                    uni.redirectTo({url: `/pages/detail/detail?page=submit`})
-                })
-            }).catch(err => {
-                console.log('上传失败:::', err)
-                // 解锁
-                this.disabled = false
-            })
+            await api.signin.addSignRecord(signRecord)
 
         } catch (e) {
             console.log('数据上传错误:::', e)
             // 解锁
             this.disabled = false
         }
+        // 成功动画
+        this.sucessAnimation()
+        setTimeout(async () => {                // 解锁
+            this.disabled = false
+            // 重新更新当天签到记录
+            await this.$store.dispatch('signin/getSigninRecordToday')
+            // 上传成功后重置客户信息
+            this.$store.commit('customer/init')
+            this.$store.commit('user/updateCtime')
+            // 返回明细页
+            uni.redirectTo({url: `/pages/detail/detail?page=submit`})
+        }, 1000)
     }
 
     private removePic(index: number) {

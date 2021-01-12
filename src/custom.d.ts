@@ -112,5 +112,5 @@ declare namespace dd {
    * 压缩图片
    * @param options IcompressImage
    */
-  function compressImage(options: ICompressImage): void
+  function compressImage(options: { success: (res: { apFilePaths: any[] }) => void; filePaths: string | string[]; compressLevel: number }): void
 }

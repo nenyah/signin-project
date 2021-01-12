@@ -16,7 +16,6 @@
     <s-person-cards
       :activeIndex="activeTab"
       :notSignRecords="notSignRecords"
-      onLower="onLower"
     ></s-person-cards>
     <!-- <s-button></s-button> -->
   </view>
