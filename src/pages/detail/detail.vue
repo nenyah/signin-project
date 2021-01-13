@@ -37,13 +37,11 @@ export default class Detail extends Vue {
     private page = 'submit'
 
     onLoad(query: queryParam) {
-        console.log('query', query)
         this.id = query.id ? Number.parseInt(query.id) : 0
         this.page = query.page
     }
 
     get items() {
-        console.log(`id: ${this.id}, page: ${this.page}`)
         if (this.page === 'submit') {
             const todayRecord = this.$store.state.signin.signinRecordToday
                 .userSignVOList[this.id]

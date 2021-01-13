@@ -7,7 +7,6 @@
  */
 import {Module} from 'vuex'
 import {IOrg} from '@/common/interface'
-// import isEmpty from 'lodash/isEmpty'
 import {Org} from '@/model/org'
 import api from '@/api'
 
@@ -46,28 +45,22 @@ const init: Module<State, any> = {
             state.current -= 1
         },
         SET_ORG(state, o) {
-            console.log('set_org:::', o)
             state.org = new Org(o)
         },
         SET_ORGS(state, o) {
-            console.log('set_orgs:::', o)
             const newData = o.length > 0 ? o : []
             state.orgs = [...state.orgs, ...newData]
         },
         SET_TOTAL(state, o) {
-            console.log('set_total:::', o)
             state.total = o
         },
         NO_MORE(state) {
-            console.log('change_more:::')
             state.more = 'nomore'
         },
         SET_LOADMORE_TRUE(state) {
-            console.log('SET_LOADMORE_TRUE:::')
             state.isLoadMore = true
         },
         SET_LOADMORE_FALSE(state) {
-            console.log('SET_LOADMORE_FALSE:::')
             state.isLoadMore = false
         },
         CHANGE_EXPANDED(state, id) {
@@ -79,11 +72,9 @@ const init: Module<State, any> = {
             })
         },
         INCREATE_CURRENT(state) {
-            console.log('increate current:::', state.current)
             state.current += 1
         },
         SET_ORGNAME(state, orgName) {
-            console.log('set orgName:::', orgName)
             state.orgName = orgName || ''
         },
     },
@@ -105,7 +96,6 @@ const init: Module<State, any> = {
                     size,
                     orgName,
                 })
-                console.log('getcustomer res:::', data, '\n总数:', total)
                 // 设置总数
                 if (current === 1 && total > 0) {
                     commit('SET_TOTAL', total)
@@ -129,7 +119,6 @@ const init: Module<State, any> = {
                 commit('INCREATE_CURRENT')
                 commit('SET_ORGS', orgs)
             } catch (e) {
-                console.log('获取客户失败', e)
                 uni.showToast({title: e, icon: 'none'})
                 if (current > 1) {
                     commit('SUB_CURRENT')

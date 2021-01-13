@@ -41,7 +41,6 @@ export default class Stats extends Vue {
 
   get tabs() {
     const tabs = this.$store.state.signin.tabs
-    console.log(tabs)
     return [
       { title: tabs[0] || 0, subTitle: "已签到" },
       { title: tabs[1] || 0, subTitle: "未签到" },

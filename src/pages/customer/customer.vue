@@ -103,7 +103,6 @@ export default class Customer extends Vue {
     }
 
     onUnload() {
-        console.log('onUnload:::')
         this.$store.commit('customer/SET_ORGNAME')
     }
 
@@ -112,7 +111,6 @@ export default class Customer extends Vue {
             return item.id === id
         })
         this.$store.commit('customer/SET_ORG', item)
-        console.log('goIndex:::')
         this.$store.commit('customer/SET_ORGNAME')
         uni.navigateBack({})
     }

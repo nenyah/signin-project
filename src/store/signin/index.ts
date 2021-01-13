@@ -33,43 +33,33 @@ const init: Module<State, any> = {
     },
     mutations: {
         SET_SIGNINRECORDTODAY(state, o) {
-            console.log('SET_SIGNINRECORDTODAY:::', o)
             state.signinRecordToday = o
         },
         SET_SIGNINRECORD(state, o) {
-            console.log('SET_SIGNINRECORD:::', o)
             state.signinRecord = o
         },
         SET_UNSIGNINRECORD(state, o) {
-            console.log('SET_UNSIGNINRECORD:::', o)
             state.unSigninRecord = o
         },
         SET_SIGNINRECORDMONTH(state, o) {
-            console.log('SET_SIGNINRECORDMONTH:::', o)
             state.signinRecordMonth = o
         },
         SET_USERNAME(state, o) {
-            console.log('SET_USERNAME', o)
             state.userName = o
         },
         changeTabs(state, o) {
-            console.log('changeTabs:::', o)
             state.tabs = o
         },
         updateUsers(state, o) {
-            console.log('updateUsers:::', o)
             state.selectedUsers = o
         },
         updateDate(state, o) {
-            console.log('updateDate:::', o)
             state.selectedDate = o
         },
         updateMonth(state, o) {
-            console.log('updateMonth:::', o)
             state.selectedMonth = o
         },
         changeUserIds(state, o) {
-            console.log('changeUserIds:::', o)
             state.userIds = o
         },
     },
@@ -104,7 +94,6 @@ const init: Module<State, any> = {
                     startDate: selectedDate,
                     endDate: selectedDate,
                 })
-                console.log('vuex signRecord:::', signRecord)
                 const signNum = signRecord.signCount || 0
                 const unSignNum = signRecord.notSignUsers.length || 0
                 commit('changeTabs', [signNum, unSignNum])

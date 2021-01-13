@@ -32,7 +32,6 @@ export default class STabControl extends Vue {
     private activeTab!: number
     @Emit('onTabClick')
     private itemClick(index: number) {
-        console.log("change index:::", index)
         return index
     }
 };

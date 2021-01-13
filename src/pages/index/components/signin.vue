@@ -75,12 +75,10 @@ export default class Signin extends Vue {
     }
 
     get address() {
-        console.log(`address:::`, this.$store.getters['user/address'])
         return this.$store.getters['user/address']
     }
 
     private goSubmit() {
-        console.log(`goSubmit:::`, this.address, this.user.selectOrg, this.user.selectOrg)
         //  判断地址定位有没有获取成功
         if (!this.address) {
             uni.showToast({title: `正在获取定位地址，请稍后！`})

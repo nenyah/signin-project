@@ -36,8 +36,6 @@ export default class CardItem extends Vue {
   @Prop() private picList!: Array<string>
   @Prop({ default: false }) private primary!: boolean
   private previewImg(pic: string) {
-    console.log("previewImg:::", pic)
-
     uni.previewImage({
       urls: [pic],
     })

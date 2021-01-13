@@ -51,7 +51,6 @@ export default class SScope extends Vue {
   }
 
   private choosePerson() {
-    console.log("选择部门:::")
     //#ifdef MP-ALIPAY
     my.complexChoose({
       title: "选择查看对象", //标题
@@ -73,7 +72,6 @@ export default class SScope extends Vue {
   }
 
   private chooseDate() {
-    console.log("选择日期:::")
     //#ifdef MP-ALIPAY
     my.datePicker({
       format: "yyyy-MM-dd",
@@ -89,7 +87,6 @@ export default class SScope extends Vue {
   }
 
   private goToHistory() {
-    console.log("跳转历史页面:::")
     uni.navigateTo({ url: "/pages/history/history" })
   }
 }

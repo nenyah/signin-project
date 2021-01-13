@@ -37,7 +37,6 @@ export default class Profile extends Vue {
   onLoad(query: queryParam) {
     const { name, userId } = query
     this.userInfo = { username: name }
-    console.log("profile page:::", query)
   }
 
   get items() {

@@ -86,7 +86,6 @@ export default class History extends Vue {
             latitude += lat
             longitude += lon
         }
-        console.log('midLocation:::', locations, num, latitude, longitude)
         latitude /= num
         longitude /= num
         return {latitude, longitude}

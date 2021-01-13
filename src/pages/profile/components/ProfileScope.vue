@@ -55,10 +55,6 @@ export default class ProfileScope extends Vue {
     }
 
     get userSignCount() {
-        console.log(
-            'signinRecordMonth:::',
-            this.$store.state.signin.signinRecordMonth
-        )
         const recordMonth = this.$store.state.signin.signinRecordMonth
         return !!recordMonth ? recordMonth.userSignCount : 0
     }
@@ -73,7 +69,6 @@ export default class ProfileScope extends Vue {
             format: 'yyyy-MM',
             currentDate: this.month,
             success: (res) => {
-                console.log('选择日期:::', res)
                 // 1. 更新日期
                 this['$store'].commit('signin/updateMonth', res.date)
                 // 2. 调用获取签到信息
@@ -84,7 +79,6 @@ export default class ProfileScope extends Vue {
     }
 
     private goToHistory() {
-        console.log('goToHistory')
         uni.navigateTo({url: `/pages/history/history`})
     }
 }

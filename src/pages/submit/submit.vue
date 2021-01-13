@@ -146,8 +146,6 @@ export default class Submit extends Vue {
     }
 
     get customer() {
-        console.log('customer:::', this.$store.state.customer.org)
-
         return this.$store.state.customer.org
     }
 
@@ -175,6 +173,7 @@ export default class Submit extends Vue {
                 uni.showToast({title: JSON.stringify(err)})
             }
         }).catch(err => {
+            uni.showToast({title: JSON.stringify(err)})
             console.log(err)
         })
     }
@@ -263,7 +262,6 @@ export default class Submit extends Vue {
         const res = await uni.getImageInfo({
             src: file,
         })
-        console.log('res:::', res)
     }
 }
 </script>

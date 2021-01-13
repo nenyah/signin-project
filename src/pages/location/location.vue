@@ -174,14 +174,12 @@ export default class Location extends Vue {
   }
 
   private controlTap() {
-    console.log("点击控制点:::")
     this.$store.dispatch("user/getLocation")
     this.chooseItem(0)
     this.goTop()
   }
 
   private onItemClick(idx: number) {
-    console.log("item click:::", idx)
     this.cancel()
     this.searching = false
     this.chooseItem(idx)
@@ -210,7 +208,6 @@ export default class Location extends Vue {
   }
 
   private search(value: any) {
-    console.log("search:::", value)
     this.searched = true
     this.searchItems = this.items.filter((item) => {
       return (
