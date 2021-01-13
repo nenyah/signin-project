@@ -14,9 +14,20 @@
             style="height:40vh;"
         >
             <view
+                class="panel rounded-full circle flex flex-col justify-center items-center mb-20"
+                style="background:#f8b55e;"
+                @tap="goSubmit"
+                v-if="user.userName===undefined"
+            >
+                <view class="scanner"></view>
+                <view class="text-gray-300 text-3xl">签到</view>
+                <view class="text-white text-5xl">{{ ctime }}</view>
+            </view>
+            <view
                 class="rounded-full w-260 h-260 circle flex flex-col justify-center items-center mb-20"
                 style="background:#f8b55e;"
                 @tap="goSubmit"
+                v-else
             >
                 <view class="text-gray-300 text-3xl">签到</view>
                 <view class="text-white text-5xl">{{ ctime }}</view>
@@ -63,12 +74,20 @@ export default class Signin extends Vue {
         return signinRecordToday.userSignCount || 0
     }
 
+    get address() {
+        console.log(`address:::`, this.$store.getters['user/address'])
+        return this.$store.getters['user/address']
+    }
 
     private goSubmit() {
-        const address = this.$store.getters.address
+        console.log(`goSubmit:::`, this.address, this.user.selectOrg, this.user.selectOrg)
         //  判断地址定位有没有获取成功
-        if (!address) {
-            uni.showToast({title: `还没有地址信息哦！`})
+        if (!this.address) {
+            uni.showToast({title: `正在获取定位地址，请稍后！`})
+            return
+        }
+        if (!this.user.jobNumber) {
+            uni.showToast({title: `正在获取用户信息，请稍后！`})
             return
         }
         // 1. 判断要不要选择客户
@@ -84,4 +103,63 @@ export default class Signin extends Vue {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style lang="scss">
+.panel {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    box-shadow: inset 0 0 0 99px #f7b662, inset 0 0 0 100px whitesmoke;
+    border-radius: 50%;
+    transform: rotate(0deg);
+    overflow: hidden;
+    width: 2.6rem;
+    height: 2.6rem;
+    border: 1px solid #f7b662;
+
+    .scanner {
+        animation: scanning 3s infinite linear;
+        background-image: linear-gradient(to top right, #fff 0%, rgba(0, 0, 0, 0) 50%);
+        transform-origin: top left;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 2.6rem;
+        height: 2.6rem;
+        border-left: 1px solid #f7b662;
+    }
+
+    .panel:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 1px;
+        height: 100%;
+        background: #f7b662;
+    }
+
+    .panel:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #f7b662;
+    }
+
+    @keyframes scanning {
+        100% {
+            -ms-transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+}
+</style>
