@@ -26,10 +26,10 @@ const store = new Vuex.Store({
   actions: {
     async initApp({ dispatch, commit }) {
       try {
-        // 1. 用户登录
-        await dispatch("user/login")
-        // 2. 获取定位
+        // 1. 获取定位
         await dispatch("user/getLocation")
+        // 2. 用户登录
+        await dispatch("user/login")
         // 3. 获取签到记录
         await dispatch("signin/getSigninRecordToday")
         // 4. 更新时间

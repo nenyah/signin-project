@@ -93,14 +93,21 @@ const init: Module<State, any> = {
                         }
                         resolve(res)
                     },
+                    fail: err => {
+                        uni.showToast({title: JSON.stringify(err)})
+                    }
                 })
             })
         },
         getLocation: async ({state, commit}) => {
             const [err, res]: any = await uni.getLocation({})
-
-            if (err) {
-                uni.showToast({title: '获取地址错误'})
+            if (!!err) {
+                uni.showModal({
+                    title: '钉钉无法获取你的定位',
+                    content: JSON.stringify(err.errMsg),
+                    cancelText: `不签到`,
+                    confirmText: `去设置`
+                })
                 return
             }
             commit(SET_LOCATION, res)
