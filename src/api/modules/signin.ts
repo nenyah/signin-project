@@ -12,6 +12,7 @@ interface SignRecordParams {
     current?: number
     size?: number
     userIds?: number[]
+    userId?: number
     startDate?: string
     endDate?: string
 }

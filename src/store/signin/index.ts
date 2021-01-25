@@ -2,7 +2,6 @@ import {Module} from 'vuex'
 import api from '@/api'
 import {ISignHistory, IUserDetail} from '@/common/interface'
 import moment from 'moment/moment'
-import {differenceBy} from 'lodash'
 
 interface State {
     signinRecordToday: ISignHistory[]
@@ -75,7 +74,7 @@ const init: Module<State, any> = {
             }
         },
         async getSigninRecord({state, commit, rootState}) {
-            const {selectedUsers, selectedDate, userIds} = state
+            const {selectedUsers, selectedDate} = state
             try {
                 let res
                 if (state.selectedUsers.length > 0) {
@@ -125,11 +124,11 @@ const init: Module<State, any> = {
                 .format('YYYY-MM-DD')
             try {
                 const signRecord = await api.signin.getSignRecord({
-                    userIds,
+                    userId: userIds.length > 0 ? userIds[0] : undefined,
                     startDate: firstDate,
                     endDate: lastDate,
                 })
-                const signinRecord = signRecord.userSignVOList.length > 0 ? signRecord: []
+                const signinRecord = signRecord.userSignVOList.length > 0 ? signRecord : []
                 console.log('signinRecord:::', signinRecord)
                 commit('SET_SIGNINRECORDMONTH', signinRecord)
             } catch (e) {
