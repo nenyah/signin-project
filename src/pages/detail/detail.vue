@@ -35,24 +35,26 @@ export default class Detail extends Vue {
 
     private id = 0
     private page = 'submit'
+    private items = []
 
     onLoad(query: queryParam) {
         this.id = query.id ? Number.parseInt(query.id) : 0
         this.page = query.page
+        this.getItems()
     }
 
-    get items() {
+    private getItems() {
         if (this.page === 'submit') {
             const todayRecord = this.$store.state.signin.signinRecordToday
                 .userSignVOList[this.id]
-            return [todayRecord]
+            this.items = [todayRecord]
         } else {
             const monthRecord = this.$store.state.signin.signinRecordMonth.userSignVOList.filter(
                 (item: IUserSignVO) => {
                     return Number.parseInt(item.id) === this.id
                 }
             )
-            return monthRecord
+            this.items = monthRecord
         }
     }
 
